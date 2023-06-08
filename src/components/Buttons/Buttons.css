@@ -1,0 +1,20 @@
+.general-button{
+    border: none;
+    border-radius: 40px;
+    height: 32px;
+    outline: none;
+    padding: 4px 14px;
+}
+
+.edit-profile-button{
+    background-color: #fff;
+    border: 0.9px solid rgb(211, 211, 211, 0.5);
+    border-radius: 20px;
+    height: 35px;
+    outline: none;
+    padding: 0 16px;
+}
+
+.edit-profile-button:hover{
+    background-color: rgb(233, 232, 232);
+}

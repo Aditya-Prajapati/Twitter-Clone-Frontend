@@ -1,0 +1,44 @@
+.main-container {
+    justify-content: center;
+    padding-bottom: 38px;
+}
+
+.feed {
+    margin-left: 13%;
+    width: 50%;
+}
+
+.side-panel-container {
+    padding: 0 5% 0 2%;
+    width: 37%;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 999px) {
+
+    .signup-panel {
+        width: 75% !important;
+    }
+
+    .sidebar {
+        width: 20% !important;
+    }
+
+    .side-panel-container {
+        display: none !important;
+    }
+
+    .feed {
+        margin-left: 20%;
+        margin-right: 10%;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 599px) {
+
+    .feed {
+        margin: 0;
+    }
+
+}

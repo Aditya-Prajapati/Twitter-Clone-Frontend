@@ -1,0 +1,67 @@
+#Login {
+  width: 35%;
+  height: 38rem;
+  display: flex;
+  margin: 2% auto;
+  padding: 0.6rem;
+  border-radius: 2%;
+  border: 0.05rem solid rgb(159, 156, 156);
+}
+
+#Login .LoginButton {
+  display: flex;
+  align-items: center;
+  width: 65%;
+  margin: 1.5% auto;
+  padding: 2% 0;
+  justify-content: center;
+  border: 0.05rem solid rgb(159, 156, 156);
+}
+
+#Login .HeadingText {
+  margin: 3% auto 3%;
+  font-weight: bolder;
+}
+
+#Login .Or-line {
+  align-items: center;
+  border-top: 1px solid;
+  width: 65%;
+  margin: 4% auto;
+  color: rgb(159, 156, 156);
+  height: 1%;
+}
+
+#Login .or {
+  position: relative;
+  margin: 0 auto;
+  top: -0.3rem;
+  z-index: 1;
+  border: none;
+  background-color: #fff;
+}
+
+.contact {
+  border-radius: 0.14rem;
+}
+
+.center-placeholder::placeholder {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#Login .NotAccount {
+  padding-top: 3rem;
+  padding-left: 5rem;
+}
+
+@media (max-width: 600px) {
+
+  #Login {
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    border: none;
+  }
+
+}

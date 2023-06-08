@@ -1,0 +1,18 @@
+.side-panel{
+    /* box-shadow: 0 0 5px 0 #00000022; */
+    border-radius: 16px;
+    width: 100%;
+}
+
+.side-panel ul{
+    width: 100%;
+}
+
+.side-panel-item{
+    border: none;
+    padding: 10px 16px;
+}
+
+.side-panel-item-content{
+    width: 100%;
+}

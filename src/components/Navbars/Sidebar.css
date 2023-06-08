@@ -1,0 +1,8 @@
+.sidebar{
+    border-right: 0.9px solid rgb(211, 211, 211, 0.3);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 13%;
+    z-index: 1;
+}
