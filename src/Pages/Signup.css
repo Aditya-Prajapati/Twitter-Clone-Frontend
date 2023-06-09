@@ -43,3 +43,8 @@
     height: auto;
     width: 100%;
 }
+
+.passwordContainer{
+    width: 100%;
+    margin: 1.5% auto;
+}

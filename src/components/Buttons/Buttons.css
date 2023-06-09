@@ -1,3 +1,7 @@
+.general-button-container{
+    text-decoration: none;
+}
+
 .general-button{
     border: none;
     border-radius: 40px;

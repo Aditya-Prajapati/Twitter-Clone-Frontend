@@ -11,10 +11,12 @@ import Signup from "../Pages/Signup";
 export default function App() {
 
     const [user, setUser] = useState(null);
+    const [signedUpMsg, setSignedUpMsg] = useState("");
     const [isLoading, setIsLoading] = useState(true);
-
+    
     useEffect(() => {
         const getUser = async () => {
+            
             try {
                 const response = await axios.get(
                     "http://localhost:8000/auth/login/success",
@@ -38,22 +40,23 @@ export default function App() {
                 console.log(error);
             } 
             finally {
+                setSignedUpMsg("");
                 setIsLoading(false);
             }
         };
 
         getUser();
-        
+
     }, []);
 
     if (isLoading) {
-        return <div>Loading...</div>; 
+        return <div> Loading... </div>; 
     }
-
+    
     return (
         <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
+            <Route path="/" element={<Login signedUpMsg={signedUpMsg} setUser={setUser} />} />
+            <Route path="/signup" element={<Signup setSignedUpMsg={setSignedUpMsg} />} />
             <Route
                 path="/home"
                 element={user ? <Home /> : <Navigate to="/" replace />}

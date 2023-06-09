@@ -1,67 +1,96 @@
 #Login {
-  width: 35%;
-  height: 38rem;
-  display: flex;
-  margin: 2% auto;
-  padding: 0.6rem;
-  border-radius: 2%;
-  border: 0.05rem solid rgb(159, 156, 156);
+    display: flex;
+    width: 35%;
+    margin: 2% auto;
+    padding: 0.7rem 0.2rem;
+    border-radius: 2%;
+    border: 0.05rem solid rgb(159, 156, 156);
 }
 
 #Login .LoginButton {
-  display: flex;
-  align-items: center;
-  width: 65%;
-  margin: 1.5% auto;
-  padding: 2% 0;
-  justify-content: center;
-  border: 0.05rem solid rgb(159, 156, 156);
+    display: flex;
+    align-items: center;
+    width: 65%;
+    margin: 1.5% auto;
+    padding: 2% 0;
+    justify-content: center;
+    border: 0.05rem solid rgb(159, 156, 156);
+}
+
+#Login .LoginInput {
+    width: 65%;
+    margin: 4px auto;
+    padding: 4px 4%;
+    height: 2.5rem;
+    outline: none;
+    border: 0.05rem solid rgb(159, 156, 156);
 }
 
 #Login .HeadingText {
-  margin: 3% auto 3%;
-  font-weight: bolder;
+    margin: 3% auto 3%;
+    font-weight: bolder;
 }
 
 #Login .Or-line {
-  align-items: center;
-  border-top: 1px solid;
-  width: 65%;
-  margin: 4% auto;
-  color: rgb(159, 156, 156);
-  height: 1%;
+    align-items: center;
+    border-top: 1px solid;
+    width: 65%;
+    margin: 4% auto;
+    color: rgb(159, 156, 156);
 }
 
-#Login .or {
-  position: relative;
-  margin: 0 auto;
-  top: -0.3rem;
-  z-index: 1;
-  border: none;
-  background-color: #fff;
+#Login .submit {
+    width: 100%;
 }
 
 .contact {
-  border-radius: 0.14rem;
+    border-radius: 0.14rem;
 }
 
 .center-placeholder::placeholder {
-  text-align: center;
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 #Login .NotAccount {
-  padding-top: 3rem;
-  padding-left: 5rem;
+    align-items: center;
+    padding-top: 2rem;
 }
 
-@media (max-width: 600px) {
-
-  #Login {
-    width: 100%;
+#Login .NotAccount p {
     margin: 0;
-    padding: 1rem;
-    border: none;
-  }
+}
 
+/* Signup page CSS */
+.passwordContainer {
+    display: flex;
+    width: 65%;
+    height: 2.5rem;
+    margin: 4px auto;
+    padding: 4px 4%;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0.14rem;
+    border: 0.05rem solid rgb(159, 156, 156);
+}
+.passwordContainer input {
+    border: none !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+    height: 2rem !important;
+    width: 100% !important;
+}
+
+.passwordContainer a {
+    cursor: pointer;
+    vertical-align: center;
+}
+
+@media (max-width: 999px) {
+
+    #Login {
+        width: 100%;
+        margin: 0;
+        padding: 1rem;
+        border: none;
+    }
 }

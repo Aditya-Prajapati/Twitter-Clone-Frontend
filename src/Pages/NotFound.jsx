@@ -5,11 +5,8 @@ export default function NotFound(){
 
     const navigate = useNavigate();
 
-    
     useEffect(() => {
-        setTimeout(() => {
-            navigate("/");
-        })
+        navigate("/");
     }, [])
 
     return (
