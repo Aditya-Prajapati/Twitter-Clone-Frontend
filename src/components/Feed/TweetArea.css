@@ -9,4 +9,15 @@
     outline: none;
     padding: 12px 0;
     resize: none; 
+    width: 100%;
+}
+
+.tweet-button{
+    border: none;
+    border-radius: 40px;
+    height: 32px;
+    outline: none;
+    padding: 4px 14px;
+    color: white;
+    background-color: #1da1f2;
 }

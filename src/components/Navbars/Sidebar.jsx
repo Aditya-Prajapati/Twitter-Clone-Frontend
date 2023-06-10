@@ -25,9 +25,9 @@ export default function Sidebar(props) {
 
                 {/* Icons */}
                 <ul className="nav flex-column mb-auto text-center">
-                    <Link to="/home"> <NavItem iconName={faHouse} iconColor={"black"} iconSize={"xl"} /> </Link>
-                    <Link to="/explore"> <NavItem iconName={faHashtag} iconColor={"black"} iconSize={"xl"} /> </Link>
-                    <Link to="/profile"> <NavItem iconName={faUser} iconColor={"black"} iconSize={"xl"} /> </Link>
+                    <NavItem link="/home" iconName={faHouse} iconColor={"black"} iconSize={"xl"} /> 
+                    <NavItem link="/explore" iconName={faHashtag} iconColor={"black"} iconSize={"xl"} /> 
+                    <NavItem link="/profile" iconName={faUser} iconColor={"black"} iconSize={"xl"} /> 
                 </ul>
 
                 {/* Profile Icon */}

@@ -59,15 +59,15 @@ export default function App() {
             <Route path="/signup" element={<Signup setSignedUpMsg={setSignedUpMsg} />} />
             <Route
                 path="/home"
-                element={user ? <Home /> : <Navigate to="/" replace />}
+                element={user ? <Home user={user} /> : <Navigate to="/" replace />}
             />
             <Route
                 path="/explore"
-                element={user ? <Explore /> : <Navigate to="/" replace />}
+                element={user ? <Explore user={user} /> : <Navigate to="/" replace />}
             />
             <Route
                 path="/profile"
-                element={user ? <Profile /> : <Navigate to="/" replace />}
+                element={user ? <Profile user={user} /> : <Navigate to="/" replace />}
             />
             <Route path="*" element={<NotFound />} />
         </Routes>

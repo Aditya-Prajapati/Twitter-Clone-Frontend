@@ -36,12 +36,8 @@ export default function Home(props){
 
             <div className="d-inline-flex flex-column feed">
                 {(isTablet || isDesktop) && <Header heading="Home" subHeading="" />}
-                <TweetArea />
-                <Tweet />
-                <Tweet />
-                <Tweet />
-                <Tweet />
-                <Tweet />
+                <TweetArea user={props.user} />
+                {/* <Tweet /> */}
                 {isMobile && <MobileNavbar />}
             </div>
 

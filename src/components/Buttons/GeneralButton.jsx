@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Buttons.css";
 
-export default function FollowButton(props){
+export default function GeneralButton(props){
     
     return (
             <Link to={props.to} className="d-flex align-items-center justify-content-center general-button-container">
@@ -12,7 +12,7 @@ export default function FollowButton(props){
                     type={props.type} 
                     style={{ backgroundColor: `${props.bgc}`, ...props.style }}
                 >
-                    <div  className="anchor" style={{ color: `${props.color}` }}> 
+                    <div className="anchor" style={{ color: `${props.color}` }}> 
                         {props.svg}
                         {props.text} 
                     </div> 
