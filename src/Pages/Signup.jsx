@@ -13,6 +13,7 @@ export default function Signup(props) {
 
     const navigate = useNavigate();
 
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [pswrd, setPswrd] = useState("");
     const [confirmPswrd, setConfirmPswrd] = useState("");
@@ -22,7 +23,7 @@ export default function Signup(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (email == "" || pswrd == ""){
+        if (name == "" || email == "" || pswrd == ""){
             setSignupMsg("Invalid credentials")
             return;
         }
@@ -34,7 +35,7 @@ export default function Signup(props) {
         await axios
             .post(
                 "http://localhost:8000/auth/signup",
-                { username: email, password: pswrd },
+                { name: name, username: email, password: pswrd },
                 { withCredentials: true },
                 {
                     headers: {
@@ -73,6 +74,18 @@ export default function Signup(props) {
             <hr className="Or-line" />
 
             <form onSubmit={handleSubmit} className="d-flex flex-column align-items-center w-100">
+                <input
+                    name="name"
+                    onChange={(e) => {
+                        setSignupMsg(false);
+                        setName(e.target.value);
+                    }}
+                    className="LoginInput contact center-placeholder "
+                    type="text"
+                    placeholder="Name"
+                    autoComplete="on"
+                />
+
                 <input
                     name="email"
                     onChange={(e) => {

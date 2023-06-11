@@ -1,6 +1,5 @@
 #Trending:hover{
   background-color: rgb(247, 249, 249);
-  cursor: pointer;
 }
 
 #Trending .Heading {
@@ -26,13 +25,11 @@
 }
 
 #Trending .Setting {
-  align-items: center;
   display: flex;
-  height: 0.7rem;
-  padding-bottom: 0.2rem;
+  align-items: center;
+  cursor: pointer;
+  height: 0;
   border: none;
-  color: rgb(83, 100, 113);
-  background-color: #ffff;
   margin-right: 5%;
 }
 

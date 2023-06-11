@@ -1,6 +1,7 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../components/App.css";
 
 import Sidebar from "../components/Navbars/Sidebar";
@@ -14,18 +15,9 @@ import Header from "../components/Header/Header";
 export default function Home(props){
 
     const navigate = useNavigate();
-
-    const isDesktop = useMediaQuery({
-        query: "(min-width: 1000px)"
-    })
-
-    const isTablet = useMediaQuery({ 
-        query: "(min-width: 600px)"
-    })
-
-    const isMobile = useMediaQuery({
-        query: "(max-width: 599px)"
-    })
+    const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
+    const isTablet = useMediaQuery({ query: "(min-width: 600px)" });
+    const isMobile = useMediaQuery({ query: "(max-width: 599px)" });
 
     return (
         <div className="d-flex main-container">
@@ -37,15 +29,14 @@ export default function Home(props){
             <div className="d-inline-flex flex-column feed">
                 {(isTablet || isDesktop) && <Header heading="Home" subHeading="" />}
                 <TweetArea user={props.user} />
-                {/* <Tweet /> */}
                 {isMobile && <MobileNavbar />}
             </div>
 
             <div className={"d-inline-flex flex-column side-panel-container"}>
 
                 {isDesktop && <div className="sticky-top">
-                    <Searchbar />
-                    <SidePanel />
+                    <Searchbar style={{ width: "100%" }} />
+                    <SidePanel user={props.user} />
                 </div>} 
 
             </div>

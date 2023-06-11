@@ -11,17 +11,9 @@ import Trending from "../components/Trending/Trending.jsx";
 
 export default function Explore(props){
 
-    const isDesktop = useMediaQuery({
-        query: "(min-width: 1000px)"
-    })
-
-    const isTablet = useMediaQuery({ 
-        query: "(min-width: 600px)"
-    })
-
-    const isMobile = useMediaQuery({
-        query: "(max-width: 599px)"
-    })
+    const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
+    const isTablet = useMediaQuery({ query: "(min-width: 600px)" });
+    const isMobile = useMediaQuery({ query: "(max-width: 599px)" });
 
     return (
         <div className="d-flex main-container">
@@ -32,16 +24,10 @@ export default function Explore(props){
 
             <div className="d-inline-flex flex-column feed">
                 {/* {(isTablet || isDesktop) && <Header heading="Explore" subHeading="" />} */}
-                <Searchbar classNames={`${!isMobile && "mx-3"}`} />
+                <div className="d-flex justify-content-center align-items-center w-100">
+                    <Searchbar style={{ width: "96%" }} />
+                </div>
                 <Section />
-                <Trending />
-                <Trending />
-                <Trending />
-                <Trending />
-                <Trending />
-                <Trending />
-                <Trending />
-                <Trending />
                 <Trending />
                 {/* <Tweet /> */}
                 {isMobile && <MobileNavbar />}
@@ -50,7 +36,7 @@ export default function Explore(props){
             <div className={"d-inline-flex flex-column side-panel-container"}>
 
                 {isDesktop && <div className="sticky-top">
-                    <SidePanel classNames="mt-2" />
+                    <SidePanel classNames="mt-2" user={props.user} />
                 </div>} 
 
             </div>

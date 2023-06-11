@@ -5,8 +5,8 @@ import NameAndId from "../ProfileBox/NameAndId";
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
-export default function Tweet() {
-
+export default function Tweet(props) {
+    
     return (
         <div className="card" style={{ width: "100%" }}>
             <div className="card-body">
@@ -22,7 +22,7 @@ export default function Tweet() {
                             {/* Tweet Header */}
                             <div className="d-flex justify-content-between">
 
-                                <NameAndId />
+                                <NameAndId user={props.user} />
                                 <div className="dropdown">
 
                                     <a href="#" className="d-flex align-items-center justify-content-center p-3 link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown"> </a>
@@ -36,12 +36,12 @@ export default function Tweet() {
                             </div>
 
                             {/* Tweet Content */}
-                            <p className="card-text my-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ipsam commodi assumenda dicta id sint aliquam, repudiandae maxime unde sapiente</p>
+                            <p className="card-text my-3"> {props.tweetContent} </p> 
 
                             {/* Tweet Image */}
-                            <div className="tweet-image-bg">
+                            {/* <div className="tweet-image-bg">
                                 <img src="https://github.com/mdo.png" alt="tweet_img" className="tweet-image" />
-                            </div>
+                            </div> */}
 
                         </div>
 

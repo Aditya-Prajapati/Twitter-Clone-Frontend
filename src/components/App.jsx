@@ -20,13 +20,7 @@ export default function App() {
             try {
                 const response = await axios.get(
                     "http://localhost:8000/auth/login/success",
-                    {
-                        withCredentials: true,
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Access-Control-Allow-Credentials": true,
-                        },
-                    }
+                    { withCredentials: true }
                 );
                 
                 if (response.status === 200) {
@@ -46,7 +40,6 @@ export default function App() {
         };
 
         getUser();
-
     }, []);
 
     if (isLoading) {

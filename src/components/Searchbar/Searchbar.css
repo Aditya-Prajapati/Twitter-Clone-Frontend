@@ -9,4 +9,5 @@
 .searchbar input{
     border: none;
     outline: none;
+    padding-right: 12px;
 }

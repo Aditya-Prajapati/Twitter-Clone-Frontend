@@ -9,7 +9,7 @@ export default function Trending() {
       <p className="Heading">1.Tiger</p>
       <div class="Hastag-div">
         <p className="Hastag">#Trending</p>
-        <button className="  Setting">...</button>
+        <button className="Setting">...</button>
       </div>
       <p className="Tweets">7500 Tweets</p>
       

@@ -10,8 +10,8 @@ export default function SidePanel(props){
             <ul className="list-group" >
                 <h5 className="ms-1 p-4 pb-2">Who to follow</h5>
 
-                <SidePanelItem />
-                <SidePanelItem />
+                <SidePanelItem user={props.user} />
+                <SidePanelItem user={props.user} />
             </ul>
 
         </div>

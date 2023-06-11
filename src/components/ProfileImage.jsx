@@ -11,7 +11,7 @@ export default function ProfileImage(props){
     return (
         <img
             className={"rounded-circle"}
-            src="https://github.com/mdo.png"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS_lSNw7Ee7u6J7SWu5Ku6BP6H3kMcOI9TFw&usqp=CAU"
             alt="profile_image"
             style={imageStyle}
         />

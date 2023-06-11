@@ -5,7 +5,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ProfileImage from "../ProfileImage";
 import "./ProfileBox.css";
 
-export default function ProfileBox(){
+export default function ProfileBox(props){
 
     return (
         <div>
@@ -23,11 +23,11 @@ export default function ProfileBox(){
                     <EditProfileButton />
                 </div>
 
-                <NameAndId />  
+                <NameAndId user={props.user} />  
 
                 {/* Information */}
                 <div className="profile-box-info">
-                    <p><CalendarMonthIcon sx={{ fontSize: "16px" }} style={{ verticalAlign: "center" }} /> Joined May 2023 </p>  
+                    <p><CalendarMonthIcon sx={{ fontSize: "16px" }} style={{ verticalAlign: "center" }} /> Joined {props.user.joined} </p>  
                     <p><strong> 10 </strong> Following <strong> 2 </strong> Followers </p>
                 </div>
 

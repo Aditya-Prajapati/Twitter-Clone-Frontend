@@ -4,7 +4,7 @@ import NameAndId from "../ProfileBox/NameAndId";
 import ProfileImage from "../ProfileImage";
 import "./SidePanel.css";
 
-export default function SidePanelItem() {
+export default function SidePanelItem(props) {
 
     return (
         <li className="d-flex list-group-item my-1 bgc-white side-panel-item">
@@ -18,8 +18,8 @@ export default function SidePanelItem() {
 
             {/* Content */}
             <div className="d-flex align-items-center justify-content-between side-panel-item-content">
-                <NameAndId />
-                <GeneralButton bgc="rgb(39, 44, 48)" color="white" text="Follow" />
+                <NameAndId user={props.user} />
+                <GeneralButton bgc="#282829" color="white" text="Follow" />
             </div>
             
         </li>

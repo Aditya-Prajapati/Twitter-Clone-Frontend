@@ -19,15 +19,15 @@ export default function Sidebar(props) {
         <div className="d-inline-flex flex-column align-items-end p-2 sidebar">
             
                 {/* Main Logo */}
-                <a href="/" className="p-3">
+                <a href="/home" className="p-3">
                     <TwitterIcon fontSize="large" sx={{ color: "#1da1f2" }} />
                 </a>
 
                 {/* Icons */}
                 <ul className="nav flex-column mb-auto text-center">
-                    <NavItem link="/home" iconName={faHouse} iconColor={"black"} iconSize={"xl"} /> 
-                    <NavItem link="/explore" iconName={faHashtag} iconColor={"black"} iconSize={"xl"} /> 
-                    <NavItem link="/profile" iconName={faUser} iconColor={"black"} iconSize={"xl"} /> 
+                    <NavItem link="/home" iconName={faHouse} iconColor={"#282829"} iconSize={"xl"} /> 
+                    <NavItem link="/explore" iconName={faHashtag} iconColor={"#282829"} iconSize={"xl"} /> 
+                    <NavItem link="/profile" iconName={faUser} iconColor={"#282829"} iconSize={"xl"} /> 
                 </ul>
 
                 {/* Profile Icon */}

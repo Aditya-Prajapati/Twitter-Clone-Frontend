@@ -15,10 +15,10 @@ export default function TweetArea(props){
         e.preventDefault();
 
         axios
-            .post("http://localhost:8000/posttweet",
+            .post("http://localhost:8000/posttweets",
             {
                 username: props.user.username,
-                tweetContent: tweetContent
+                tweetContent: tweetContent.trim()
             }, 
             { withCredentials: true }
             )
@@ -38,7 +38,7 @@ export default function TweetArea(props){
             <ProfileImage style={{ margin: "4px 14px 0 0" }} width={52} height={52} />
 
             <div className="d-flex flex-column" style={{ width: "100%" }}>
-                <form onClick={postTweet}>
+                <form onSubmit={postTweet}>
                     
                     <textarea placeholder="What is happening?!" onChange={(e) => {setTweetContent(e.target.value)}} value={tweetContent} className={"tweet-area-text-area"}></textarea>
 

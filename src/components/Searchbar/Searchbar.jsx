@@ -5,9 +5,9 @@ import "./Searchbar.css";
 export default function Searchbar(props){
 
     return (
-        <div className={"d-inline-flex align-items-center mt-2 w-100 bgc-white searchbar " + props.classNames}>
+        <div className={"d-inline-flex align-items-center mt-2 bgc-white searchbar " + props.className} style={ props.style }>
 
-            <SearchIcon className="align-items-center ms-2 me-3" fontSize="medium" sx={{ color: "rgb(83, 100, 113)" }} />
+            <SearchIcon className="align-items-center ms-2 me-3 "  fontSize="medium" sx={{ color: "rgb(83, 100, 113)" }} />
             <input className="d-flex w-100 bgc-white" type="text" placeholder="Search Twitter" />
             
         </div>
