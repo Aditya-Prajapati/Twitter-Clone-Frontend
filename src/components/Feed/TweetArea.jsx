@@ -11,11 +11,11 @@ export default function TweetArea(props){
 
     const [tweetContent, setTweetContent] = useState("");
 
-    const postTweet = (e) => {
+    const postTweet = async (e) => {
         e.preventDefault();
 
-        axios
-            .post("http://localhost:8000/posttweets",
+        await axios
+            .post("http://localhost:8000/tweet/posttweets",
             {
                 username: props.user.username,
                 tweetContent: tweetContent.trim()

@@ -11,6 +11,10 @@
     font-size: 1rem;
 }
 
+.dropdown-item{
+    cursor: pointer;
+}
+
 .tweet-image{
     height: auto;
     max-width: 100%;

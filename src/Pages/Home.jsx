@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -19,6 +19,37 @@ export default function Home(props){
     const isTablet = useMediaQuery({ query: "(min-width: 600px)" });
     const isMobile = useMediaQuery({ query: "(max-width: 599px)" });
 
+    const [deleteTweet, setDeleteTweet] = useState(-1);
+    const [isLoading, setIsLoading] = useState(true);
+    const [tweets, setTweets] = useState(null);
+
+    useEffect(() => {
+        const getTweets =  () => {
+            axios.
+                get("http://localhost:8000/tweet/gettweets", {
+                    withCredentials: true,
+                    params: { all: true }
+                }
+                )
+                .then((res) => {
+                    if (res.status === 200){
+                        setTweets(res.data.tweets.reverse());
+                    }
+
+                    setIsLoading(false);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+
+        getTweets();
+    }, [])
+
+    if (isLoading){
+        return <div> Loading... </div>;
+    }
+
     return (
         <div className="d-flex main-container">
             
@@ -29,6 +60,10 @@ export default function Home(props){
             <div className="d-inline-flex flex-column feed">
                 {(isTablet || isDesktop) && <Header heading="Home" subHeading="" />}
                 <TweetArea user={props.user} />
+
+                {tweets.map((tweet, index) => {
+                    return <Tweet key={index} tweet={tweet} user={props.user} setDeleteTweet={setDeleteTweet} />;
+                })}
                 {isMobile && <MobileNavbar />}
             </div>
 

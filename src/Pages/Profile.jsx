@@ -17,32 +17,33 @@ export default function Profile(props){
     const isTablet = useMediaQuery({ query: "(min-width: 600px)" });
     const isMobile = useMediaQuery({ query: "(max-width: 599px)" });
 
+    const [deleteTweet, setDeleteTweet] = useState(-1);
     const [isLoading, setIsLoading] = useState(true);
     const [tweets, setTweets] = useState(null);
 
     useEffect(() => {
-        const getTweets = async () => {
-            try{
-                await axios.
-                    get("http://localhost:8000/gettweets",
-                    { withCredentials: true }
-                    )
-                    .then((res) => {
-                        if (res.status === 200){
-                            setTweets(res.data.tweets.reverse());
-                        }
-                    })
-            }
-            catch{(err) => {
-                console.log(err);
-            }}
-            finally{
-                setIsLoading(false);
-            }
+        const getTweets = () => {
+            axios.
+                get("http://localhost:8000/tweet/gettweets",{
+                    withCredentials: true,
+                    params: { all: false }
+                }
+                )
+                .then((res) => {
+                    if (res.status === 200){
+                        setTweets(res.data.tweets.reverse());
+                    }
+
+                    setIsLoading(false);
+                    setDeleteTweet(false);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
         }
 
         getTweets();
-    }, [])
+    }, [deleteTweet])
 
     if (isLoading){
         return <div> Loading... </div>;
@@ -58,13 +59,10 @@ export default function Profile(props){
             <div className="d-inline-flex flex-column feed">
                 {(isTablet || isDesktop) && <Header heading="Profile" subHeading="" />}
                 <ProfileBox user={props.user} />
-                {/* <div className="header" style={{ height: "30px" }}>
-                    <p> <strong> Your tweets </strong> </p>
-                </div> */}
                 <Header heading="Your tweets" />
 
                 {tweets.map((tweet, index) => {
-                    return <Tweet key={index} tweetContent={tweet.content} user={props.user} />;
+                    return <Tweet key={index} tweet={tweet} user={props.user} setDeleteTweet={setDeleteTweet} />;
                 })}
                 {isMobile && <MobileNavbar />}
             </div>
@@ -72,7 +70,7 @@ export default function Profile(props){
             <div className={"d-inline-flex flex-column side-panel-container"}>
 
                 {isDesktop && <div className="sticky-top">
-                    <Searchbar style={{ width: "96%" }} />
+                    <Searchbar style={{ width: "100%" }} />
                     <SidePanel user={props.user} />
                 </div>} 
 
