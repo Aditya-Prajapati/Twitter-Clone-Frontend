@@ -71,7 +71,7 @@ export default function Profile(props){
 
                 {isDesktop && <div className="sticky-top">
                     <Searchbar style={{ width: "100%" }} />
-                    <SidePanel user={props.user} />
+                    <SidePanel />
                 </div>} 
 
             </div>

@@ -3,6 +3,7 @@ import GeneralButton from "../Buttons/GeneralButton";
 import NameAndId from "../ProfileBox/NameAndId";
 import ProfileImage from "../ProfileImage";
 import "./SidePanel.css";
+import axios from "axios";
 
 export default function SidePanelItem(props) {
 

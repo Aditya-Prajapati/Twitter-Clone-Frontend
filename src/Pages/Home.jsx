@@ -19,7 +19,6 @@ export default function Home(props){
     const isTablet = useMediaQuery({ query: "(min-width: 600px)" });
     const isMobile = useMediaQuery({ query: "(max-width: 599px)" });
 
-    const [deleteTweet, setDeleteTweet] = useState(-1);
     const [isLoading, setIsLoading] = useState(true);
     const [tweets, setTweets] = useState(null);
 
@@ -59,10 +58,14 @@ export default function Home(props){
 
             <div className="d-inline-flex flex-column feed">
                 {(isTablet || isDesktop) && <Header heading="Home" subHeading="" />}
-                <TweetArea user={props.user} />
+                <TweetArea user={props.user} text="What is happening?!" buttonText="Tweet" />
 
                 {tweets.map((tweet, index) => {
-                    return <Tweet key={index} tweet={tweet} user={props.user} setDeleteTweet={setDeleteTweet} />;
+                    let user = {
+                        name: tweet.name,
+                        username: tweet.username
+                    }
+                    return <Tweet key={index} tweet={tweet} user={user} disableDeleteTweet={true} />;
                 })}
                 {isMobile && <MobileNavbar />}
             </div>
@@ -71,7 +74,7 @@ export default function Home(props){
 
                 {isDesktop && <div className="sticky-top">
                     <Searchbar style={{ width: "100%" }} />
-                    <SidePanel user={props.user} />
+                    <SidePanel />
                 </div>} 
 
             </div>

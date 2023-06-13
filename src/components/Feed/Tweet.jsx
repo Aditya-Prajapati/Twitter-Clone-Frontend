@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Tweet.css";
 import ProfileImage from "../ProfileImage";
 import NameAndId from "../ProfileBox/NameAndId";
+import TweetArea from "./TweetArea";
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import axios from "axios";
@@ -9,7 +10,9 @@ import axios from "axios";
 export default function Tweet(props) {
 
     const [likes, setLikes] = useState(props.tweet.likes);
-    const [comments, setComments] = useState(props.tweet.comments);
+    const [comments, setComments] = useState(0);
+    const [clickedComments, setClickedComments] = useState(false);
+    const [commentedBy, setCommentedBy] = useState([]);
 
     const deleteTweet = (e) => {
         e.preventDefault();
@@ -32,7 +35,6 @@ export default function Tweet(props) {
     }
 
     const handleLike = () => {
-
         axios.
             post("http://localhost:8000/tweet/liketweet",
             {
@@ -49,6 +51,30 @@ export default function Tweet(props) {
                 else {
                     setLikes(res.data.updatedLikes);
                 }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    const handleComment = () => {
+        if (clickedComments){
+            setClickedComments(false);
+            return;
+        }
+        else {
+            setClickedComments(true);
+        }
+
+        axios
+            .post("http://localhost:8000/tweet/getcomments",
+            {
+                tweetId: props.tweet._id
+            },
+            { withCredentials: true }
+            )
+            .then((res) => {
+                setCommentedBy(res.data.commentedBy);
             })
             .catch((err) => {
                 console.log(err);
@@ -77,7 +103,7 @@ export default function Tweet(props) {
                                         <a href="#" className="d-flex align-items-center justify-content-center p-3 link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown"> </a>
                                         <ul className="dropdown-menu text-small">
                                             <li>
-                                                <button className="dropdown-item"> Delete Tweet </button>
+                                                <button disabled={props.disableDeleteTweet} className="dropdown-item"> Delete Tweet </button>
                                             </li>
                                         </ul>
                                     </form>
@@ -97,7 +123,7 @@ export default function Tweet(props) {
 
                         {/* Icons */}
                         <div className="d-flex">
-                            <a className="card-link ms-1" style={{ cursor: "pointer" }}> 
+                            <a onClick={() => handleComment()} className="card-link ms-1" style={{ cursor: "pointer" }}> 
                                 <ModeCommentOutlinedIcon sx={{ color: "rgb(83, 100, 113)", fontSize: "19px" }} /> 
                             </a>
                             <span> {comments} </span>
@@ -106,6 +132,9 @@ export default function Tweet(props) {
                             </a>
                             <span> {likes} </span>
                         </div>
+
+                        {/* Comments */}
+                        {clickedComments && <TweetArea tweet={props.tweet} user={props.user} text="Tweet your reply!" buttonText="Reply" style={{ border: "0.9px solid rgb(211, 211, 211, 0.3)", marginTop: "10px" }} makeReply={true} />}
                         
                     </div>
                 </div>

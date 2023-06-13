@@ -3,6 +3,7 @@
     border-right: 0.9px solid rgb(211, 211, 211, 0.3);
     display: "inline-flex";
     flex-direction: "column";
+    margin-top: 30px;
     padding: 12px 16px 0 16px;
     position: relative;
 }
@@ -14,7 +15,7 @@
 }
 
 .profile-box-image{
-    bottom: 146px;
+    bottom: 165px;
     position: absolute;
 }
 

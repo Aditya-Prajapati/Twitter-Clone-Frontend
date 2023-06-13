@@ -17,6 +17,7 @@ export default function TweetArea(props){
         await axios
             .post("http://localhost:8000/tweet/posttweets",
             {
+                name: props.user.name,
                 username: props.user.username,
                 tweetContent: tweetContent.trim()
             }, 
@@ -32,15 +33,34 @@ export default function TweetArea(props){
             })
     }
 
+    const comment = (e) => {
+        e.preventDefault();
+
+        axios
+            .post("http://localhost:8000/tweet/comment",
+            {
+                tweetId: props.tweet._id,
+                tweetContent: tweetContent.trim()
+            },
+            { withCredentials: true }
+            )
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
     return (
-        <div className={"d-flex tweet-area"}>
+        <div className={"d-flex tweet-area"} style={props.style}>
 
             <ProfileImage style={{ margin: "4px 14px 0 0" }} width={52} height={52} />
 
             <div className="d-flex flex-column" style={{ width: "100%" }}>
-                <form onSubmit={postTweet}>
+                <form onSubmit={props.makeReply ? comment : postTweet}>
                     
-                    <textarea placeholder="What is happening?!" onChange={(e) => {setTweetContent(e.target.value)}} value={tweetContent} className={"tweet-area-text-area"}></textarea>
+                    <textarea placeholder={props.text} onChange={(e) => {setTweetContent(e.target.value)}} value={tweetContent} className={"tweet-area-text-area"}></textarea>
 
                     <div className={"d-flex my-2 align-items-center justify-content-between"}>
 
@@ -55,7 +75,7 @@ export default function TweetArea(props){
                             disabled={ !( /\S/.test(tweetContent) ) } 
                             style={{ backgroundColor: `${ !(/\S/.test(tweetContent)) ? "rgb(29, 161, 242, 0.5)" : "rgb(29, 161, 242)" }` }}
                         > 
-                            Tweet 
+                            {props.buttonText}
                         </button>
                         
                     </div>
