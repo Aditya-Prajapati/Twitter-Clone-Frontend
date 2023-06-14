@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Home from "../Pages/Home";
 import Explore from "../Pages/Explore";
@@ -7,6 +7,7 @@ import Profile from "../Pages/Profile";
 import NotFound from "../Pages/NotFound";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
+import TweetPage from "../Pages/TweetPage";
 
 export default function App() {
 
@@ -51,8 +52,12 @@ export default function App() {
             <Route path="/" element={<Login signedUpMsg={signedUpMsg} setUser={setUser} />} />
             <Route path="/signup" element={<Signup setSignedUpMsg={setSignedUpMsg} />} />
             <Route
+                exact
                 path="/home"
                 element={user ? <Home user={user} /> : <Navigate to="/" replace />}
+            />
+            <Route 
+                path=":username/:tweetId" element={user ? <TweetPage user={user} /> : <Navigate to="/" replace />}
             />
             <Route
                 path="/explore"

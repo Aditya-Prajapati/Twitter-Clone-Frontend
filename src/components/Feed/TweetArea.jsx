@@ -45,7 +45,9 @@ export default function TweetArea(props){
             { withCredentials: true }
             )
             .then((res) => {
-                console.log(res)
+                console.log(res);
+                setTweetContent("");
+                props.setNewComment(true);
             })
             .catch((err) => {
                 console.log(err)
@@ -55,7 +57,7 @@ export default function TweetArea(props){
     return (
         <div className={"d-flex tweet-area"} style={props.style}>
 
-            <ProfileImage style={{ margin: "4px 14px 0 0" }} width={52} height={52} />
+            <ProfileImage style={{ margin: "4px 14px 0 0" }} width={props.width} height={props.height} />
 
             <div className="d-flex flex-column" style={{ width: "100%" }}>
                 <form onSubmit={props.makeReply ? comment : postTweet}>

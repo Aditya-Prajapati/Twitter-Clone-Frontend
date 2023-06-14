@@ -1,10 +1,21 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+
 .card{
     border: none;
     border-radius: 0;
     border-bottom: 0.9px solid rgb(211, 211, 211, 0.3);
     border-right: 0.9px solid rgb(211, 211, 211, 0.3);
     overflow: hidden;
+    width: 100%;
     z-index: 0;
+}
+
+.card:hover{
+    background-color: rgb(211, 211, 211, 0.13);
+    cursor: pointer;
 }
 
 .card-text{
@@ -27,4 +38,15 @@
     margin: 12px 0;
     overflow: auto;
     text-align: center;
+}
+
+.comment-line{
+    border-left: 2px solid rgb(211, 211, 211, 0.7);
+    height: 100%;
+    margin: 18% 0 0 48%;
+}
+
+#tweet-page .card{
+    background-color: white;
+    cursor: auto;
 }

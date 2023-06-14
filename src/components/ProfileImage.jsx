@@ -3,8 +3,8 @@ import React from "react";
 export default function ProfileImage(props){
 
     const imageStyle = {
-        width: `${props.width}px`,
-        height: `${props.height}px`,
+        width: !props.width ? "46px" : `${props.width}px`,
+        height: !props.height ? "46px" : `${props.height}px`,
         ...props.style
     };
 
