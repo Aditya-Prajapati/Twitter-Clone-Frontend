@@ -10,7 +10,7 @@ export default function NameAndId(props){
         <div className="d-inline-flex flex-column name-and-id">
 
             <p className="m-0" style={{ fontWeight: "500" }}> {props.user.name} </p> 
-            <a href="#" className="anchor"><span> {props.user.username} </span></a>
+            <div href="#" className="anchor"><span> {props.user.username} </span></div>
             
         </div>
     );

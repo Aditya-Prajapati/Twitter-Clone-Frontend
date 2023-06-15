@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Tweet.css";
 import ProfileImage from "../ProfileImage";
 import NameAndId from "../ProfileBox/NameAndId";
@@ -15,84 +16,18 @@ export default function Comments(props) {
     const [clickedComments, setClickedComments] = useState(false);
     const [commentedBy, setCommentedBy] = useState(null);
 
-    const deleteTweet = (e) => {
-        e.preventDefault();
-
-        axios
-            .post("http://localhost:8000/tweet/deletetweet", 
-            {
-                tweetId: props.tweet._id
-            },
-            { withCredentials: true }
-            )
-            .then((res) => {
-                if (res.status == 200){
-                    props.setDeleteTweet(true);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
-
-    const handleLike = () => {
-        axios.
-            post("http://localhost:8000/tweet/liketweet",
-            {
-                tweetId: props.tweet._id,
-                likes: props.tweet.likes
-            },
-            { withCredentials: true }
-            )
-            .then((res) => {
-
-                if (res.data.message == "Already liked"){
-                    setLikes(res.data.updatedLikes);
-                }
-                else {
-                    setLikes(res.data.updatedLikes);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
-
-    const handleComment = () => {
-        if (clickedComments){
-            setClickedComments(false);
-            return;
-        }
-        else {
-            setClickedComments(true);
-        }
-
-        axios
-            .post("http://localhost:8000/tweet/getcomments",
-            {
-                tweetId: props.tweet._id
-            },
-            { withCredentials: true }
-            )
-            .then((res) => {
-                setCommentedBy(res.data.commentedBy);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
-
     useEffect(() => {
         const getComments = () => {
             axios
                 .post("http://localhost:8000/tweet/getcomments",
                 {
-                    tweetId: props.tweet._id
+                    tweetId: props.tweet._id // might be the commentId, bcz comment is treated as tweet
                 },
                 { withCredentials: true }
                 )
                 .then((res) => {
-                    setCommentedBy(res.data.commentedBy.reverse());
+                    console.log(res.data.comments);
+                    setCommentedBy(res.data.comments.reverse());
                     props.setNewComment(false);
                 })
                 .catch((err) => {
@@ -102,17 +37,41 @@ export default function Comments(props) {
         getComments();
     }, [props.newComment])
 
+    const handleClick = (commentBy, user) => {
+        props.setCommentClicked([...props.commentClicked, {commentBy, user}]);
+        axios
+            .post("http://localhost:8000/tweet/getcomments",
+            {
+                tweetId: commentBy._id // might be the commentId, bcz comment is treated as tweet
+            },
+            { withCredentials: true }
+            )
+            .then((res) => {
+                console.log(res.data.comments);
+                setCommentedBy(res.data.comments.reverse());
+                props.setNewComment(false);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
     if (commentedBy == null) return <div> Loading... </div>;
 
     return (
         <>
-            {/* Tweet component is used for comments */}
+            {/* Tweet component is used for comments too */}
             {commentedBy.map((commentBy, index) => {
                 let user = {
                     name: commentBy.name,
                     username: commentBy.username
                 }
-                return <Tweet key={index} tweet={commentBy} user={user} />
+                
+                return (
+                    <div onClick={() => handleClick(commentBy, user)} >
+                        <Tweet key={index} tweet={commentBy} user={user} isComment={true} />
+                    </div>
+                )
             })}
         </>
     )

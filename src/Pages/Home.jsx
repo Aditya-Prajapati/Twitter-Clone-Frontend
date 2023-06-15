@@ -48,7 +48,7 @@ export default function Home(props){
     }
 
     return (
-        <div className="d-flex main-container">
+        <div className="d-flex main-container" id="home">
             
             <div className="d-inline-flex">
                 {(isTablet || isDesktop) && <Sidebar />}
@@ -56,14 +56,14 @@ export default function Home(props){
 
             <div className="d-inline-flex flex-column feed">
                 {(isTablet || isDesktop) && <Header heading="Home" subHeading="" />}
-        
+                <TweetArea user={props.user} text="What is happening ?!" buttonText="Tweet" width={52} height={52} />            
 
                 {tweets.map((tweet, index) => {
                     let user = {
                         name: tweet.name,
                         username: tweet.username
                     }
-                    return <Tweet key={index} tweet={tweet} user={user} disableDeleteTweet={true} />;
+                    return <Tweet key={index} tweet={tweet} user={user} disableDeleteTweet={true} directComment={true} />;
                 })}
 
                 {isMobile && <MobileNavbar />}

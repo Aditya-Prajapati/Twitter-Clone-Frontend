@@ -19,11 +19,13 @@ export default function TweetPage(props){
     const { username, tweetId } = useParams();
 
     useEffect(() => {
+        console.log("fetching commemetn.tweet")
         const fetchTweet = () => {
             axios.get(`http://localhost:8000/tweet/gettweet/${tweetId}`,
             {withCredentials: true }
             )
             .then((res) => {
+                console.log(res);
                 setTweet(res.data.tweet);
             })
             .catch((err) => {
@@ -45,7 +47,7 @@ export default function TweetPage(props){
             <div className="d-inline-flex flex-column feed">
                 {(isTablet || isDesktop) && <Header heading="Tweet" subHeading="" />}
         
-                <Tweet tweet={tweet} user={{ name: tweet.name, username: tweet.username }} />
+                <Tweet tweet={tweet} user={{ name: tweet.name, username: tweet.username }} disableDeleteTweet={true} tweetPage={true} directComment={true} />
 
                 {isMobile && <MobileNavbar />}
             </div>
