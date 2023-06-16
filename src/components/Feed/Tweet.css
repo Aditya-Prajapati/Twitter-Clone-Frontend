@@ -8,7 +8,7 @@
     z-index: 0;
 }
 
-#home .card:hover{
+.card:hover{
     background-color: rgb(211, 211, 211, 0.13);
     cursor: pointer;
 }
@@ -39,9 +39,4 @@
     border-left: 2px solid rgb(211, 211, 211, 0.7);
     height: 100%;
     margin: 18% 0 0 48%;
-}
-
-#tweet-page .card{
-    background-color: white;
-    cursor: auto;
 }

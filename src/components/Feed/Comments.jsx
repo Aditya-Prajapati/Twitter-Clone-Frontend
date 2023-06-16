@@ -26,7 +26,6 @@ export default function Comments(props) {
                 { withCredentials: true }
                 )
                 .then((res) => {
-                    console.log(res.data.comments);
                     setCommentedBy(res.data.comments.reverse());
                     props.setNewComment(false);
                 })
@@ -36,25 +35,6 @@ export default function Comments(props) {
         }
         getComments();
     }, [props.newComment])
-
-    const handleClick = (commentBy, user) => {
-        props.setCommentClicked([...props.commentClicked, {commentBy, user}]);
-        axios
-            .post("http://localhost:8000/tweet/getcomments",
-            {
-                tweetId: commentBy._id // might be the commentId, bcz comment is treated as tweet
-            },
-            { withCredentials: true }
-            )
-            .then((res) => {
-                console.log(res.data.comments);
-                setCommentedBy(res.data.comments.reverse());
-                props.setNewComment(false);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
 
     if (commentedBy == null) return <div> Loading... </div>;
 
@@ -68,9 +48,7 @@ export default function Comments(props) {
                 }
                 
                 return (
-                    <div onClick={() => handleClick(commentBy, user)} >
-                        <Tweet key={index} tweet={commentBy} user={user} isComment={true} />
-                    </div>
+                    <Tweet key={index} tweet={commentBy} user={user} isComment={true} style={{ cursor: "pointer" }} />
                 )
             })}
         </>

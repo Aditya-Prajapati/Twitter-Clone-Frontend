@@ -57,7 +57,7 @@ export default function App() {
                 element={user ? <Home user={user} /> : <Navigate to="/" replace />}
             />
             <Route 
-                path=":username/:tweetId" element={user ? <TweetPage user={user} /> : <Navigate to="/" replace />}
+                path=":username/:tweetId/:isComment" element={user ? <TweetPage user={user} /> : <Navigate to="/" replace />}
             />
             <Route
                 path="/explore"
