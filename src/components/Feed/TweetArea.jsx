@@ -39,6 +39,8 @@ export default function TweetArea(props){
         axios
             .post("http://localhost:8000/tweet/comment",
             {
+                comments: props.comments,
+                isComment: props.isComment || false,
                 tweetId: props.tweet._id, // comments are treated as tweet, so this tweet could be a comment too
                 tweetContent: tweetContent.trim() // comment content
             },
@@ -46,7 +48,8 @@ export default function TweetArea(props){
             )
             .then((res) => {
                 setTweetContent("");
-                props.setNewComment(true);
+                {props.setComments && props.setComments(res.data.updatedComments);}
+                {props.setNewComment && props.setNewComment(true);}
             })
             .catch((err) => {
                 console.log(err)

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Tweet.css";
 import ProfileImage from "../ProfileImage";
 import NameAndId from "../ProfileBox/NameAndId";
@@ -54,7 +54,7 @@ const handleLike = (tweet, setLikes, isComment) => {
         })
 }
 
-const handleComment = (tweet, setClickedCommentButton, clickedCommentButton, setCommentedBy) => {
+const handleComment = (tweet, setClickedCommentButton, clickedCommentButton, setCommentedBy, isComment) => {
     if (clickedCommentButton) {
         setClickedCommentButton(false);
         return;
@@ -81,28 +81,27 @@ const handleComment = (tweet, setClickedCommentButton, clickedCommentButton, set
 export default function Tweet(props) {
 
     const [likes, setLikes] = useState(props.tweet.likes);
-    const [comments, setComments] = useState(0);
-    const [newComment, setNewComment] = useState(false);
+    const [comments, setComments] = useState(props.tweet.comments);
     const [clickedCommentButton, setClickedCommentButton] = useState(false);
     const [commentedBy, setCommentedBy] = useState([]);
     const [commentClicked, setCommentClicked] = useState([]);
 
     return (
         <>
-            <Link to={`/${props.tweet.username}/${props.tweet._id}/${props.isComment || false}`} style={{ textDecoration: "none", color: "black" }}>
-                <div className="card" style={ props.style }>
-                    <div className="card-body">
-                        <div className="d-flex flex-column">
-                            <div className="d-flex">
+            <div className="card" style={props.style}>
+                <div className="card-body">
+                    <div className="d-flex flex-column">
+                        <div className="d-flex">
 
-                                <div className="me-3">
-                                    <ProfileImage width={46} height={46} />
+                            <div className="me-3">
+                                <ProfileImage width={46} height={46} />
 
-                                    {/* {(commentClicked.length !== 0)  && <div className="comment-line"></div>} */}
-                                </div>
+                                {/* {(commentClicked.length !== 0)  && <div className="comment-line"></div>} */}
+                            </div>
 
-                                <div className="d-flex flex-column" style={{ width: "100%" }}>
+                            <div className="d-flex flex-column" style={{ width: "100%" }}>
 
+                                <Link to={`/${props.tweet.username}/${props.tweet._id}/${props.isComment || false}`} style={{ textDecoration: "none", color: "black" }}>
                                     <div>
                                         {/* Tweet Header */}
                                         <div className="d-flex justify-content-between">
@@ -132,23 +131,24 @@ export default function Tweet(props) {
 
                                     </div>
 
-                                    {/* Icons */}
-                                    <div className="d-flex">
-                                        <a onClick={() => handleComment(props.tweet, setClickedCommentButton, clickedCommentButton, setCommentedBy)} className="card-link ms-1 options" style={{ cursor: "pointer" }}>
-                                            <ModeCommentOutlinedIcon sx={{ color: "rgb(83, 100, 113)", fontSize: "19px" }} />
-                                        </a>
-                                        <span> {comments} </span>
-                                        <a onClick={() => handleLike(props.tweet, setLikes, props.isComment)} className="card-link ms-5 options" style={{ cursor: "pointer" }}>
-                                            <FavoriteBorderOutlinedIcon sx={{ color: "rgb(83, 100, 113)", fontSize: "19px" }} />
-                                        </a>
-                                        <span> {likes} </span>
-                                    </div>
+                                </Link>
+                                {/* Icons */}
+                                <div className="d-flex">
+                                    <a onClick={() => handleComment(props.tweet, setClickedCommentButton, clickedCommentButton, setCommentedBy, props.isComment)} className="card-link ms-1 options" style={{ cursor: "pointer" }}>
+                                        <ModeCommentOutlinedIcon sx={{ color: "rgb(83, 100, 113)", fontSize: "19px" }} />
+                                    </a>
+                                    <span> {comments} </span>
+                                    <a onClick={() => handleLike(props.tweet, setLikes, props.isComment)} className="card-link ms-5 options" style={{ cursor: "pointer" }}>
+                                        <FavoriteBorderOutlinedIcon sx={{ color: "rgb(83, 100, 113)", fontSize: "19px" }} />
+                                    </a>
+                                    <span> {likes} </span>
                                 </div>
                             </div>
                         </div>
+                        {clickedCommentButton && <TweetArea tweet={props.tweet} user={props.user} text="Tweet your reply!" buttonText="Reply" style={{ marginTop: "14px", padding: "0", border: "none" }} makeReply={true} comments={comments} setNewComment={props.setNewComment} setComments={setComments} isComment={props.isComment} />}
                     </div>
                 </div>
-            </Link>
+            </div>
         </>
     );
 }
