@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NameAndId from "./NameAndId";
 import EditProfileButton from "../Buttons/EditProfileButton";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ProfileImage from "../ProfileImage";
 import "./ProfileBox.css";
+import axios from "axios";
+
+const getUpdatedUser = (updatedUser) => {
+    axios
+        .get("http://localhost:8000/getuser",
+        { withCredentials: true }
+        )
+        .then((res) => {
+            updatedUser(res.data.user)
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
 
 export default function ProfileBox(props){
+
+    const [updatedUser, setUpdatedUser] = useState(null);
+
+    useEffect(() => {
+        getUpdatedUser(setUpdatedUser);
+    }, [props.followUpdated])
+
+    if (!updatedUser) return <div> Loading... </div>;
 
     return (
         <div>
@@ -28,7 +50,7 @@ export default function ProfileBox(props){
                 {/* Information */}
                 <div className="profile-box-info">
                     <p><CalendarMonthIcon sx={{ fontSize: "16px" }} style={{ verticalAlign: "center" }} /> Joined {props.user.joined} </p>  
-                    <p><strong> 10 </strong> Following <strong> 2 </strong> Followers </p>
+                    <p><strong> {updatedUser.follows.length} </strong> Following <strong> {updatedUser.followedBy.length} </strong> Followers </p>
                 </div>
 
             </div>

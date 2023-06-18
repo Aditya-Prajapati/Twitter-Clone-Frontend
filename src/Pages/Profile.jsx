@@ -20,6 +20,7 @@ export default function Profile(props){
     const [deleteTweet, setDeleteTweet] = useState(-1);
     const [isLoading, setIsLoading] = useState(true);
     const [tweets, setTweets] = useState(null);
+    const [followUpdated, setFollowUpdated] = useState(false);
 
     useEffect(() => {
         const getTweets = () => {
@@ -58,7 +59,7 @@ export default function Profile(props){
 
             <div className="d-inline-flex flex-column feed">
                 {(isTablet || isDesktop) && <Header heading="Profile" subHeading="" />}
-                <ProfileBox user={props.user} />
+                <ProfileBox user={props.user} setUser={props.setUser} followUpdated={followUpdated} />
                 <Header heading="Your tweets" />
 
                 {tweets.map((tweet, index) => {
@@ -71,7 +72,7 @@ export default function Profile(props){
 
                 {isDesktop && <div className="sticky-top">
                     <Searchbar style={{ width: "100%" }} />
-                    <SidePanel />
+                    <SidePanel user={props.user} setUser={props.setUser} followUpdated={followUpdated} setFollowUpdated={setFollowUpdated} />
                 </div>} 
 
             </div>

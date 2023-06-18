@@ -122,7 +122,7 @@ export default function TweetPage(props) {
 
                 {isDesktop && <div className="sticky-top">
                     <Searchbar style={{ width: "100%" }} />
-                    <SidePanel />
+                    <SidePanel user={props.user} />
                 </div>}
 
             </div>

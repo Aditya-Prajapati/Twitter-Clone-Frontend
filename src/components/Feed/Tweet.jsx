@@ -104,7 +104,7 @@ export default function Tweet(props) {
                                 <div className="me-3">
                                     <ProfileImage width={46} height={46} user={props.user} />
 
-                                    {props.threaded && <div className="comment-line"></div>}
+                                    {(clickedCommentButton || props.threaded) && <div className="comment-line"></div>}
                                 </div>
 
                                 <div className="d-flex flex-column" style={{ width: "100%" }}>
@@ -151,9 +151,8 @@ export default function Tweet(props) {
                             </div>
 
                         </Link>
-
-                        {clickedCommentButton && <TweetArea tweet={props.tweet} user={props.user} text="Tweet your reply!" buttonText="Reply" style={{ marginTop: "14px", padding: "0", border: "none" }} makeReply={true} comments={comments} setNewComment={props.setNewComment} setComments={setComments} isComment={props.isComment} />}
                     </div>
+                    {clickedCommentButton && <TweetArea tweet={props.tweet} user={props.currentUser || props.user} text="Tweet your reply!" buttonText="Reply" style={{ marginTop: "14px", padding: "0", border: "none" }} makeReply={true} comments={comments} setNewComment={props.setNewComment} setComments={setComments} isComment={props.isComment} />}
                 </div>
             </div>
         </>

@@ -38,7 +38,7 @@ export default function SidePanel(props){
                 <h5 className="ms-1 p-4 pb-2">Who to follow</h5>
 
                 {randomUsers.map((randomUser, index) => {
-                    return <SidePanelItem key={index} user={randomUser} />
+                    return <SidePanelItem key={index} user={props.user} setUser={props.setUser} followUpdated={props.followUpdated} setFollowUpdated={props.setFollowUpdated} randomUser={randomUser} />
                 })}
 
             </ul>

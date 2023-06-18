@@ -46,7 +46,7 @@ export default function Home(props){
     if (isLoading){
         return <div> Loading... </div>;
     }
-
+    console.log(tweets);
     return (
         <div className="d-flex main-container" id="home">
             
@@ -64,7 +64,7 @@ export default function Home(props){
                         username: tweet.username,
                         picture: tweet.picture
                     }
-                    return <Tweet key={index} tweet={tweet} user={user} disableDeleteTweet={true} />;
+                    return <Tweet key={index} tweet={tweet} user={user} currentUser={props.user} disableDeleteTweet={true} />;
                 })}
 
                 {isMobile && <MobileNavbar />}
@@ -74,7 +74,7 @@ export default function Home(props){
 
                 {isDesktop && <div className="sticky-top">
                     <Searchbar style={{ width: "100%" }} />
-                    <SidePanel />
+                    <SidePanel user={props.user} />
                 </div>} 
 
             </div>
