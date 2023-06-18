@@ -31,7 +31,6 @@ export default function TweetPage(props) {
                 { withCredentials: true }
             )
                 .then((res) => {
-                    console.log(res.data.tweet)
                     setTweet(res.data.tweet);
                 })
                 .catch((err) => {
@@ -54,41 +53,67 @@ export default function TweetPage(props) {
     }, [tweetId, newComment])
 
     if (!tweet || !commentClicked) return <div> Loading... </div>;
-    console.log(commentClicked)
 
     return (
         <div className="d-flex main-container" id="tweet-page">
 
             <div className="d-inline-flex">
-                {(isTablet || isDesktop) && <Sidebar />}
+                {(isTablet || isDesktop) && <Sidebar user={props.user} />}
             </div>
 
             <div className="d-inline-flex flex-column feed">
                 {(isTablet || isDesktop) && <Header heading="Tweet" subHeading="" />}
 
-                <Tweet tweet={tweet} user={{ name: tweet.name, username: tweet.username }} disableDeleteTweet={true} directComment={true} tweetPage={true} setNewComment={setNewComment} />
+                <Tweet
+                    tweet={tweet}
+                    user={{ name: tweet.name, username: tweet.username, picture: tweet.picture }}
+                    disableDeleteTweet={true}
+                    directComment={true}
+                    tweetPage={true}
+                    setNewComment={setNewComment}
+                    threaded={true}
+                />
                 {commentClicked
                     .filter((comment) => comment !== null)
                     .map((comment, index) => {
                         let user = {
                             username: comment.username,
-                            name: comment.name
+                            name: comment.name,
+                            picture: comment.picture
                         };
                         return (
                             <Tweet
                                 key={index}
                                 tweet={comment}
                                 user={user}
-                                newComment={newComment}
                                 setNewComment={setNewComment}
+                                threaded={true}
                                 isComment={true}
+                                disableDeleteTweet={true}
                             />
                         );
                     })
                 }
+                <TweetArea
+                    tweet={commentClicked.at(-1) ? commentClicked.at(-1) : tweet}
+                    user={props.user}
+                    text="Tweet your reply!"
+                    buttonText="Reply"
+                    style={{ marginTop: "10px" }}
+                    makeReply={true}
+                    setNewComment={setNewComment}
+                    comments={commentClicked.at(-1) ? commentClicked.at(-1).comments : tweet.comments}
+                    isComment={commentClicked.at(-1) ? true : false}
+                />
                 <Header heading="Comments" subHeading="" />
-                <TweetArea tweet={commentClicked.at(-1) ? commentClicked.at(-1) : tweet} user={props.user} text="Tweet your reply!" buttonText="Reply" style={{ marginTop: "10px" }} makeReply={true} setNewComment={setNewComment} directComment={props.directComment} comments={commentClicked.at(-1) ? commentClicked.at(-1).comments : tweet.comments} isComment={commentClicked.at(-1) ? true : false} />
-                <Comments user={props.user} tweet={commentClicked.at(-1) ? commentClicked.at(-1) : tweet} newComment={newComment} setNewComment={setNewComment} directComment={props.directComment} commentClicked={commentClicked} setCommentClicked={setCommentClicked} />
+                <Comments
+                    user={props.user}
+                    tweet={commentClicked.at(-1) ? commentClicked.at(-1) : tweet}
+                    newComment={newComment}
+                    setNewComment={setNewComment}
+                    commentClicked={commentClicked}
+                    setCommentClicked={setCommentClicked}
+                />
 
                 {isMobile && <MobileNavbar />}
             </div>

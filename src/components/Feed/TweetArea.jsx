@@ -59,7 +59,7 @@ export default function TweetArea(props){
     return (
         <div className={"d-flex tweet-area"} style={props.style}>
 
-            <ProfileImage style={{ margin: "4px 14px 0 0" }} width={props.width} height={props.height} />
+            <ProfileImage style={{ margin: "4px 14px 0 0" }} width={props.width} height={props.height} user={props.user} />
 
             <div className="d-flex flex-column" style={{ width: "100%" }}>
                 <form onSubmit={props.makeReply ? comment : postTweet}>
@@ -69,9 +69,9 @@ export default function TweetArea(props){
                     <div className={"d-flex my-2 align-items-center justify-content-between"}>
 
                         <div className={"d-flex"}>
-                            <a href="#"> <CollectionsIcon className={"ms-1"} fontSize="small" sx={{ color: "#1da1f2" }} /> </a>
-                            <a href="#"> <GifBoxIcon className={"ms-3"} fontSize="small" sx={{ color: "#1da1f2" }} /> </a>
-                            <a href="#"> <SentimentSatisfiedAltIcon className={"ms-3"} fontSize="small" sx={{ color: "#1da1f2" }} /> </a>
+                            <div href="#"> <CollectionsIcon className={"ms-1"} fontSize="small" sx={{ color: "#1da1f2" }} /> </div>
+                            <div href="#"> <GifBoxIcon className={"ms-3"} fontSize="small" sx={{ color: "#1da1f2" }} /> </div>
+                            <div href="#"> <SentimentSatisfiedAltIcon className={"ms-3"} fontSize="small" sx={{ color: "#1da1f2" }} /> </div>
                         </div>
 
                         <button 

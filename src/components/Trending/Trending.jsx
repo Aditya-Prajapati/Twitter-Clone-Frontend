@@ -7,7 +7,7 @@ export default function Trending() {
     <div id="Trending" className="py-2 px-2">
       
       <p className="Heading">1.Tiger</p>
-      <div class="Hastag-div">
+      <div className="Hastag-div">
         <p className="Hastag">#Trending</p>
         <button className="Setting">...</button>
       </div>

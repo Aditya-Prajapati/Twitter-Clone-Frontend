@@ -19,7 +19,7 @@ export default function Explore(props){
         <div className="d-flex main-container">
             
             <div className="d-inline-flex">
-                {(isTablet || isDesktop) && <Sidebar setAuth={props.setAuth} />}
+                {(isTablet || isDesktop) && <Sidebar user={props.user} />}
             </div>
 
             <div className="d-inline-flex flex-column feed">

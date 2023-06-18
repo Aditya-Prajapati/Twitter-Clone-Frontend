@@ -33,7 +33,7 @@ export default function Sidebar(props) {
                 {/* Profile Icon */}
                 <div className="dropdown border-top">
                     <a href="#" className="d-flex align-items-center justify-content-center p-3 link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown">
-                        <ProfileImage width={46} height={46} />
+                        <ProfileImage width={46} height={46} user={props.user} />
                     </a>
 
                     <ul className="dropdown-menu text-small shadow">

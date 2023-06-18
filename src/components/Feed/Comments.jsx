@@ -20,10 +20,10 @@ export default function Comments(props) {
         const getComments = () => {
             axios
                 .post("http://localhost:8000/tweet/getcomments",
-                {
-                    tweetId: props.tweet._id // might be the commentId, bcz comment is treated as tweet
-                },
-                { withCredentials: true }
+                    {
+                        tweetId: props.tweet._id // might be the commentId, bcz comment is treated as tweet
+                    },
+                    { withCredentials: true }
                 )
                 .then((res) => {
                     setCommentedBy(res.data.comments.reverse());
@@ -44,11 +44,19 @@ export default function Comments(props) {
             {commentedBy.map((commentBy, index) => {
                 let user = {
                     name: commentBy.name,
-                    username: commentBy.username
+                    username: commentBy.username,
+                    picture: commentBy.picture
                 }
-                
+
                 return (
-                    <Tweet key={index} tweet={commentBy} user={user} isComment={true} style={{ cursor: "pointer" }} />
+                    <Tweet
+                        key={index}
+                        tweet={commentBy}
+                        user={user}
+                        isComment={true}
+                        style={{ cursor: "pointer" }}
+                        disableDeleteTweet={true}
+                    />
                 )
             })}
         </>

@@ -17,7 +17,7 @@ export default function ProfileBox(props){
 
             <div className={"profile-box"}>
 
-                <ProfileImage width={133} height={133} style={{ position: "absolute", bottom: "150px" }} />
+                <ProfileImage user={props.user} width={133} height={133} style={{ position: "absolute", bottom: "150px" }} />
 
                 <div className="d-flex justify-content-end">
                     <EditProfileButton />

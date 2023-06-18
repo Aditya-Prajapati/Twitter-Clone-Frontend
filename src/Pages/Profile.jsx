@@ -53,7 +53,7 @@ export default function Profile(props){
         <div className="d-flex main-container" id="profile">
             
             <div className="d-inline-flex">
-                {(isTablet || isDesktop) && <Sidebar />}
+                {(isTablet || isDesktop) && <Sidebar user={props.user} />}
             </div>
 
             <div className="d-inline-flex flex-column feed">

@@ -31,6 +31,7 @@ const deleteTweet = (e, tweet, setDeleteTweet) => {
 }
 
 const handleLike = (tweet, setLikes, isComment) => {
+
     axios.
         post("http://localhost:8000/tweet/liketweet",
             {
@@ -55,6 +56,7 @@ const handleLike = (tweet, setLikes, isComment) => {
 }
 
 const handleComment = (tweet, setClickedCommentButton, clickedCommentButton, setCommentedBy, isComment) => {
+
     if (clickedCommentButton) {
         setClickedCommentButton(false);
         return;
@@ -86,22 +88,27 @@ export default function Tweet(props) {
     const [commentedBy, setCommentedBy] = useState([]);
     const [commentClicked, setCommentClicked] = useState([]);
 
+    const customStyle = {
+        ...props.style,
+        borderBottom: props.threaded ? "none" : ""
+    }
+
     return (
         <>
-            <div className="card" style={props.style}>
+            <div className="card" style={customStyle}>
                 <div className="card-body">
                     <div className="d-flex flex-column">
-                        <div className="d-flex">
+                        <Link to={`/${props.tweet.username}/${props.tweet._id}/${props.isComment || false}`} style={{ textDecoration: "none", color: "black" }}>
+                            <div className="d-flex">
 
-                            <div className="me-3">
-                                <ProfileImage width={46} height={46} />
+                                <div className="me-3">
+                                    <ProfileImage width={46} height={46} user={props.user} />
 
-                                {/* {(commentClicked.length !== 0)  && <div className="comment-line"></div>} */}
-                            </div>
+                                    {props.threaded && <div className="comment-line"></div>}
+                                </div>
 
-                            <div className="d-flex flex-column" style={{ width: "100%" }}>
+                                <div className="d-flex flex-column" style={{ width: "100%" }}>
 
-                                <Link to={`/${props.tweet.username}/${props.tweet._id}/${props.isComment || false}`} style={{ textDecoration: "none", color: "black" }}>
                                     <div>
                                         {/* Tweet Header */}
                                         <div className="d-flex justify-content-between">
@@ -110,10 +117,10 @@ export default function Tweet(props) {
                                             <div className="dropdown">
 
                                                 <form onSubmit={(e) => deleteTweet(e, props.tweet, props.setDeleteTweet)}>
-                                                    <a href="#" className="d-flex align-items-center justify-content-center p-3 link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown"> </a>
+                                                    <div href="#" className="d-flex align-items-center justify-content-center p-3 link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown"> </div>
                                                     <ul className="dropdown-menu text-small">
                                                         <li>
-                                                            <button disabled={props.disableDeleteTweet} className="dropdown-item"> Delete Tweet </button>
+                                                            <button onClick={(e) => e.stopPropagation()} disabled={props.disableDeleteTweet} className="dropdown-item"> Delete Tweet </button>
                                                         </li>
                                                     </ul>
                                                 </form>
@@ -123,28 +130,28 @@ export default function Tweet(props) {
 
                                         {/* Tweet Content */}
                                         <p className="card-text my-3"> {props.tweet.content} </p>
-
                                         {/* Tweet Image */}
                                         {/* <div className="tweet-image-bg">
-                                        <img src="https://github.com/mdo.png" alt="tweet_img" className="tweet-image" />
-                                    </div> */}
+                                            <img src="https://github.com/mdo.png" alt="tweet_img" className="tweet-image" />
+                                        </div> */}
 
                                     </div>
-
-                                </Link>
-                                {/* Icons */}
-                                <div className="d-flex">
-                                    <a onClick={() => handleComment(props.tweet, setClickedCommentButton, clickedCommentButton, setCommentedBy, props.isComment)} className="card-link ms-1 options" style={{ cursor: "pointer" }}>
-                                        <ModeCommentOutlinedIcon sx={{ color: "rgb(83, 100, 113)", fontSize: "19px" }} />
-                                    </a>
-                                    <span> {comments} </span>
-                                    <a onClick={() => handleLike(props.tweet, setLikes, props.isComment)} className="card-link ms-5 options" style={{ cursor: "pointer" }}>
-                                        <FavoriteBorderOutlinedIcon sx={{ color: "rgb(83, 100, 113)", fontSize: "19px" }} />
-                                    </a>
-                                    <span> {likes} </span>
+                                    {/* Icons */}
+                                    <div className="d-flex">
+                                        <div onClick={(e) => { e.stopPropagation(); e.preventDefault(); handleComment(props.tweet, setClickedCommentButton, clickedCommentButton, setCommentedBy, props.isComment) }} className="card-link ms-1 options" style={{ cursor: "pointer" }}>
+                                            <ModeCommentOutlinedIcon sx={{ color: "rgb(83, 100, 113)", fontSize: "19px" }} />
+                                        </div>
+                                        <span> {comments} </span>
+                                        <div onClick={(e) => { e.stopPropagation(); e.preventDefault(); handleLike(props.tweet, setLikes, props.isComment) }} className="card-link ms-5 options" style={{ cursor: "pointer" }}>
+                                            <FavoriteBorderOutlinedIcon sx={{ color: "rgb(83, 100, 113)", fontSize: "19px" }} />
+                                        </div>
+                                        <span> {likes} </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                        </Link>
+
                         {clickedCommentButton && <TweetArea tweet={props.tweet} user={props.user} text="Tweet your reply!" buttonText="Reply" style={{ marginTop: "14px", padding: "0", border: "none" }} makeReply={true} comments={comments} setNewComment={props.setNewComment} setComments={setComments} isComment={props.isComment} />}
                     </div>
                 </div>
