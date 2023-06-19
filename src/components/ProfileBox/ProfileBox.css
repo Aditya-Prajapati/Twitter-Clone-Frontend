@@ -26,3 +26,12 @@
 .profile-box-info{
     margin-top: 12px;
 }
+
+.profile-box a{
+    color: black;
+    text-decoration: none;
+}
+
+.profile-box a:hover{
+    text-decoration: underline;
+}

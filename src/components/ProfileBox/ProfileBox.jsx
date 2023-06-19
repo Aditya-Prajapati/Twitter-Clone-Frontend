@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import NameAndId from "./NameAndId";
 import EditProfileButton from "../Buttons/EditProfileButton";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -50,7 +51,11 @@ export default function ProfileBox(props){
                 {/* Information */}
                 <div className="profile-box-info">
                     <p><CalendarMonthIcon sx={{ fontSize: "16px" }} style={{ verticalAlign: "center" }} /> Joined {props.user.joined} </p>  
-                    <p><strong> {updatedUser.follows.length} </strong> Following <strong> {updatedUser.followedBy.length} </strong> Followers </p>
+                    <p>
+                        <Link to={`${props.user.username}/following`}> <strong> {updatedUser.follows.length} </strong> Following </Link>
+                        &nbsp;&nbsp;
+                        <Link to={`${props.user.username}/followers`}> <strong> {updatedUser.followedBy.length} </strong> Followers  </Link>
+                    </p> 
                 </div>
 
             </div>

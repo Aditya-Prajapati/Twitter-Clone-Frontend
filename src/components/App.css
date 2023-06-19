@@ -13,6 +13,15 @@
     width: 37%;
 }
 
+#followPage #Section{
+    border-right: 0.9px solid rgb(211, 211, 211, 0.3);
+    padding-top: 10px;
+}
+
+#followPage .header{
+    border-bottom: none;
+}
+
 /* Responsiveness */
 @media screen and (max-width: 999px) {
 

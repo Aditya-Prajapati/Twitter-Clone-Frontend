@@ -6,7 +6,7 @@ export default function Header(props){
     return (
         <nav className="header" style={props.style}>
 
-            <p className="mb-1"> {props.heading} </p>
+            <strong> <p className="mb-1"> {props.heading} </p> </strong>
             <p> {props.subHeading} </p>
             
         </nav>

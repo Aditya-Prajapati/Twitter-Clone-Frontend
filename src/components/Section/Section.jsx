@@ -1,52 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./SectionStyles.css";
 
-export default function Section() {
-  const [activeIndex, setActiveIndex] = useState(0);
+export default function Section(props) {
 
-  const handleChildClick = (index) => {
-    setActiveIndex(index);
-  };
+    const [activeIndex, setActiveIndex] = useState(props.activeIndex);
 
-  return (
-    <div className="d-flex justify-content-between px-2 bd-highlight" id="Section">
-      
-      <div
-        className={`p-2 flex-md-fill bd-highlight ${activeIndex === 0 ? "active" : ""
-          }`}
-        onClick={() => handleChildClick(0)}
-      >
-        For you
-      </div>
-      <div
-        className={`p-2 flex-md-fill bd-highlight ${activeIndex === 1 ? "active" : ""
-          }`}
-        onClick={() => handleChildClick(1)}
-      >
-        Trending
-      </div>
-      <div
-        className={`p-2 flex-md-fill bd-highlight ${activeIndex === 2 ? "active" : ""
-          }`}
-        onClick={() => handleChildClick(2)}
-      >
-        News
-      </div>
-      <div
-        className={`p-2 flex-md-fill bd-highlight ${activeIndex === 3 ? "active" : ""
-          }`}
-        onClick={() => handleChildClick(3)}
-      >
-        Sports
-      </div>
-      {/* <div
-        className={`p-2 flex-md-fill bd-highlight ${activeIndex === 4 ? "active" : ""
-          }`}
-        onClick={() => handleChildClick(4)}
-      >
-        Entertainment
-      </div> */}
+    const handleChildClick = (index) => {
+        setActiveIndex(index);
+    };
 
-    </div>
-  );
+    return (
+        <div className="d-flex justify-content-around bd-highlight" id="Section">
+
+            {props.sections.map((section, index) => {
+                return (
+                    <Link
+                        to={ section==="Followers" ? `/profile/${props.user.username}/followers` : (section==="Following" ? `/profile/${props.user.username}/following` : "#") }
+                        key={index}
+                        className={`SectionLinks py-2 flex-md-fill bd-highlight ${activeIndex === index ? "active" : ""}`}
+                        onClick={() => handleChildClick(index)}
+                    >
+                        {section}
+                    </Link>
+                )
+            })}
+
+        </div>
+    );
 }

@@ -8,6 +8,7 @@ import NotFound from "../Pages/NotFound";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
 import TweetPage from "../Pages/TweetPage";
+import FollowPage from "../Pages/FollowPage";
 
 export default function App() {
 
@@ -64,8 +65,12 @@ export default function App() {
                 element={user ? <Explore user={user} /> : <Navigate to="/" replace />}
             />
             <Route
+                exact
                 path="/profile"
                 element={user ? <Profile user={user} setUser={setUser} /> : <Navigate to="/" replace />}
+            />
+            <Route
+                path="/profile/:username/:path" element={user ? <FollowPage user={user} /> : <Navigate to="/" replace />}
             />
             <Route path="*" element={<NotFound />} />
         </Routes>

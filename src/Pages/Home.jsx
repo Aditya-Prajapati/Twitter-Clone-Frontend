@@ -46,7 +46,7 @@ export default function Home(props){
     if (isLoading){
         return <div> Loading... </div>;
     }
-    console.log(tweets);
+    
     return (
         <div className="d-flex main-container" id="home">
             
@@ -55,7 +55,7 @@ export default function Home(props){
             </div>
 
             <div className="d-inline-flex flex-column feed">
-                {(isTablet || isDesktop) && <Header heading="Home" subHeading="" />}
+                <Header heading="Home" subHeading="" />
                 <TweetArea user={props.user} text="What is happening ?!" buttonText="Tweet" width={52} height={52} />            
 
                 {tweets.map((tweet, index) => {

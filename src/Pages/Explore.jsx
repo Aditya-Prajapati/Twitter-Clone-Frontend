@@ -2,6 +2,7 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import "../components/App.css";
 
+import Header from "../components/Header/Header";
 import Sidebar from "../components/Navbars/Sidebar";
 import MobileNavbar from "../components/Navbars/MobileNavbar";
 import Searchbar from "../components/Searchbar/Searchbar";
@@ -15,6 +16,8 @@ export default function Explore(props){
     const isTablet = useMediaQuery({ query: "(min-width: 600px)" });
     const isMobile = useMediaQuery({ query: "(max-width: 599px)" });
 
+    let sections = ["For you", "Trending", "News", "Sports"]
+
     return (
         <div className="d-flex main-container">
             
@@ -23,11 +26,11 @@ export default function Explore(props){
             </div>
 
             <div className="d-inline-flex flex-column feed">
-                {/* {(isTablet || isDesktop) && <Header heading="Explore" subHeading="" />} */}
+                {/* <Header heading="Explore" subHeading="" /> */}
                 <div className="d-flex justify-content-center align-items-center w-100">
                     <Searchbar style={{ width: "96%" }} />
                 </div>
-                <Section />
+                <Section sections={sections} activeIndex={0} />
                 <Trending />
                 {/* <Tweet /> */}
                 {isMobile && <MobileNavbar />}

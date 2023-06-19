@@ -14,3 +14,7 @@
     text-decoration: none;
     color: rgb(83, 100, 113);
 }
+
+.box-shadow{
+    box-shadow: 0 0 3px 0 #00000022;
+}

@@ -62,7 +62,7 @@ export default function TweetPage(props) {
             </div>
 
             <div className="d-inline-flex flex-column feed">
-                {(isTablet || isDesktop) && <Header heading="Tweet" subHeading="" />}
+                <Header heading="Tweet" subHeading="" />
 
                 <Tweet
                     tweet={tweet}

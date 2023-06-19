@@ -6,6 +6,10 @@
   justify-content: center;
 }
 
+.SectionLinks{
+  text-decoration: none;
+}
+
 #Section .flex-md-fill {
   background-color: #fff;
   color: rgb(86, 85, 85);

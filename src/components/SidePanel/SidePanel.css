@@ -1,7 +1,9 @@
 .side-panel{
-    /* box-shadow: 0 0 5px 0 #00000022; */
     border-radius: 16px;
     width: 100%;
+    padding-bottom: 10px;
+    background-color: rgb(247, 249, 249);
+    box-shadow: 0 0 3px 0 #00000022;
 }
 
 .side-panel ul{
@@ -10,7 +12,8 @@
 
 .side-panel-item{
     border: none;
-    padding: 10px 16px;
+    padding: 10px 20px;
+    background-color: rgb(247, 249, 249);
 }
 
 .side-panel-item-content{

@@ -58,7 +58,7 @@ export default function Profile(props){
             </div>
 
             <div className="d-inline-flex flex-column feed">
-                {(isTablet || isDesktop) && <Header heading="Profile" subHeading="" />}
+                <Header heading="Profile" subHeading="" />
                 <ProfileBox user={props.user} setUser={props.setUser} followUpdated={followUpdated} />
                 <Header heading="Your tweets" />
 
