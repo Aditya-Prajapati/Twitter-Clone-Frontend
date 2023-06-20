@@ -34,7 +34,7 @@ export default function Signup(props) {
  
         await axios
             .post(
-                "https://twitter-clone-backend-in-progress-czz4r2p10-aditya-prajapati.vercel.app/auth/signup",
+                "https://twitter-clone-backend-in-progress-33v4v2axp-aditya-prajapati.vercel.app/auth/signup",
                 { name: name, username: email, password: pswrd },
                 { withCredentials: true },
                 {
@@ -68,7 +68,7 @@ export default function Signup(props) {
             </div>
 
             <h2 className="HeadingText">New to Twitter ? </h2>
-            <LoginButton link="https://twitter-clone-backend-in-progress-czz4r2p10-aditya-prajapati.vercel.app/auth/google" icon={<GoogleIcon />} text={"Sign up with Google"} />
+            <LoginButton link="https://twitter-clone-backend-in-progress-33v4v2axp-aditya-prajapati.vercel.app/auth/google" icon={<GoogleIcon />} text={"Sign up with Google"} />
             <LoginButton link="/notfound" icon={<AppleIcon />} text={"Sign up with Apple"} />
 
             <hr className="Or-line" />

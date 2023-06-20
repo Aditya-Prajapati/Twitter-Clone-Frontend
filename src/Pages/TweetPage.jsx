@@ -27,7 +27,7 @@ export default function TweetPage(props) {
         setTweet(null);
 
         const fetchTweet = (tweetId) => {
-            axios.get(`https://twitter-clone-backend-in-progress-czz4r2p10-aditya-prajapati.vercel.app/tweet/gettweet/${tweetId}`,
+            axios.get(`https://twitter-clone-backend-in-progress-33v4v2axp-aditya-prajapati.vercel.app/tweet/gettweet/${tweetId}`,
                 { withCredentials: true }
             )
                 .then((res) => {
@@ -38,7 +38,7 @@ export default function TweetPage(props) {
                 })
         }
         const fetchComments = () => {
-            axios.get(`https://twitter-clone-backend-in-progress-czz4r2p10-aditya-prajapati.vercel.app/tweet/getcomments/${tweetId}`, // comment is treated as tweet
+            axios.get(`https://twitter-clone-backend-in-progress-33v4v2axp-aditya-prajapati.vercel.app/tweet/getcomments/${tweetId}`, // comment is treated as tweet
                 { withCredentials: true }
             )
                 .then((res) => {
