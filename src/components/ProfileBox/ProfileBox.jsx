@@ -35,7 +35,7 @@ export default function ProfileBox(props){
 
             {/* Cover Image */}
             <div className="profile-box-bg">
-                <img src="" alt="cover_photo"></img>
+                <img src=""></img> {/* alt="cover_photo" */}
             </div>
 
             <div className={"profile-box"}>

@@ -20,7 +20,7 @@ const getUsers = (request, path, setUsersToMap, setUpdatedUser) => {
                 setUsersToMap(res.data.user.followedBy);
             }
             else {
-                setUsersToMap((res.data.randomUsers.length == 0) ? null : res.data.randomUsers);
+                setUsersToMap((res.data.randomUsers.length === 0) ? [] : res.data.randomUsers);
             }
         })
         .catch((err) => {
@@ -57,7 +57,7 @@ export default function SidePanel(props){
     }
 
     return (  
-        usersToMap && <div className={"d-inline-flex bgc-white side-panel box-shadow " + props.classNames} style={props.style}>
+        (usersToMap.length !== 0) && <div className={"d-inline-flex bgc-white side-panel box-shadow " + props.classNames} style={props.style}>
 
             <ul className="list-group" >
                 {props.heading || <h5 className="ms-1 p-4 pb-2"> Who to follow </h5>}
