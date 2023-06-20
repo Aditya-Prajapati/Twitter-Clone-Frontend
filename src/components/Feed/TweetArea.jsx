@@ -15,7 +15,7 @@ export default function TweetArea(props){
         e.preventDefault();
 
         await axios
-            .post("twitter-clone-backend-in-progress-91yvo9gd7-aditya-prajapati.vercel.app/tweet/posttweets",
+            .post("https://twitter-clone-backend-in-progress-czz4r2p10-aditya-prajapati.vercel.app/tweet/posttweets",
             {
                 name: props.user.name,
                 username: props.user.username,
@@ -37,7 +37,7 @@ export default function TweetArea(props){
         e.preventDefault();
 
         axios
-            .post("twitter-clone-backend-in-progress-91yvo9gd7-aditya-prajapati.vercel.app/tweet/comment",
+            .post("https://twitter-clone-backend-in-progress-czz4r2p10-aditya-prajapati.vercel.app/tweet/comment",
             {
                 comments: props.comments,
                 isComment: props.isComment || false,

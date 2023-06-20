@@ -22,7 +22,7 @@ export default function App() {
 
             try {
                 const response = await axios.get(
-                    "twitter-clone-backend-in-progress-91yvo9gd7-aditya-prajapati.vercel.app/auth/login/success",
+                    "https://twitter-clone-backend-in-progress-czz4r2p10-aditya-prajapati.vercel.app/auth/login/success",
                     { withCredentials: true }
                 );
 

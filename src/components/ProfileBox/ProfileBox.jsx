@@ -9,7 +9,7 @@ import axios from "axios";
 
 const getUpdatedUser = (updatedUser) => {
     axios
-        .get("twitter-clone-backend-in-progress-91yvo9gd7-aditya-prajapati.vercel.app/getuser",
+        .get("https://twitter-clone-backend-in-progress-czz4r2p10-aditya-prajapati.vercel.app/getuser",
         { withCredentials: true }
         )
         .then((res) => {

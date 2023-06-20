@@ -6,7 +6,7 @@ import axios from "axios";
 const handleFollow = (userToMap, setButtonText, followUpdated, setFollowUpdated) => {
     
     axios
-        .post("twitter-clone-backend-in-progress-91yvo9gd7-aditya-prajapati.vercel.app/follow",
+        .post("https://twitter-clone-backend-in-progress-czz4r2p10-aditya-prajapati.vercel.app/follow",
         {
             userToMap: userToMap
         },
