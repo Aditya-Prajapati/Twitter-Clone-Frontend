@@ -19,7 +19,7 @@ export default function Comments(props) {
     useEffect(() => {
         const getComments = () => {
             axios
-                .post("https://twitter-clone-backend-in-progress-33v4v2axp-aditya-prajapati.vercel.app/tweet/getcomments",
+                .post("https://twitter-clone-backend-in-progress-9wu76nohl-aditya-prajapati.vercel.app/tweet/getcomments",
                     {
                         tweetId: props.tweet._id // might be the commentId, bcz comment is treated as tweet
                     },

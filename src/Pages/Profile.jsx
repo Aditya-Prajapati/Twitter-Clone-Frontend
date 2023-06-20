@@ -25,7 +25,7 @@ export default function Profile(props){
     useEffect(() => {
         const getTweets = () => {
             axios.
-                get("https://twitter-clone-backend-in-progress-33v4v2axp-aditya-prajapati.vercel.app/tweet/gettweets",{
+                get("https://twitter-clone-backend-in-progress-9wu76nohl-aditya-prajapati.vercel.app/tweet/gettweets",{
                     withCredentials: true,
                     params: { all: false }
                 }
