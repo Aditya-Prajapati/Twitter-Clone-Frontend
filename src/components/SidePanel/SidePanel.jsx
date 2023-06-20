@@ -6,7 +6,7 @@ import axios from "axios";
 const getUsers = (request, path, setUsersToMap, setUpdatedUser) => {
 
     axios
-        .get("https://twitter-clone-backend-in-progress.vercel.app/getusers", {
+        .get("twitter-clone-backend-in-progress-91yvo9gd7-aditya-prajapati.vercel.app/getusers", {
             withCredentials: true,
             params: { users: request }
         }

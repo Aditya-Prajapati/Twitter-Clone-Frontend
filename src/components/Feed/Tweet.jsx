@@ -14,7 +14,7 @@ const deleteTweet = (e, tweet, setDeleteTweet) => {
     e.preventDefault();
 
     axios
-        .post("https://twitter-clone-backend-in-progress.vercel.app/tweet/deletetweet",
+        .post("twitter-clone-backend-in-progress-91yvo9gd7-aditya-prajapati.vercel.app/tweet/deletetweet",
             {
                 tweetId: tweet._id
             },
@@ -33,7 +33,7 @@ const deleteTweet = (e, tweet, setDeleteTweet) => {
 const handleLike = (tweet, setLikes, isComment) => {
 
     axios.
-        post("https://twitter-clone-backend-in-progress.vercel.app/tweet/liketweet",
+        post("twitter-clone-backend-in-progress-91yvo9gd7-aditya-prajapati.vercel.app/tweet/liketweet",
             {
                 tweetId: tweet._id,
                 isComment: isComment,
@@ -66,7 +66,7 @@ const handleComment = (tweet, setClickedCommentButton, clickedCommentButton, set
     }
 
     axios
-        .post("https://twitter-clone-backend-in-progress.vercel.app/tweet/getcomments",
+        .post("twitter-clone-backend-in-progress-91yvo9gd7-aditya-prajapati.vercel.app/tweet/getcomments",
             {
                 tweetId: tweet._id
             },

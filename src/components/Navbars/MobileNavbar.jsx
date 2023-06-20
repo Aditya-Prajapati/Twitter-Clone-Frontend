@@ -7,7 +7,7 @@ import { faHouse, faHashtag, faUser } from "@fortawesome/free-solid-svg-icons";
 export default function MobileNavbar(){
 
     function handleLogout(){
-        window.open("https://twitter-clone-backend-in-progress.vercel.app/auth/logout", "_self");
+        window.open("https://twitter-clone-frontend-in-progress.vercel.app/auth/logout", "_self");
     }
 
     return (
