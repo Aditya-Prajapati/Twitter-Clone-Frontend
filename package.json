@@ -13,6 +13,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.3",
+    "@vercel/analytics": "^1.0.1",
     "async_hooks": "^1.0.0",
     "axios": "^1.4.0",
     "babel": "^6.23.0",
