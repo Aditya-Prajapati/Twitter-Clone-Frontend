@@ -12,7 +12,7 @@ export default function Sidebar(props) {
     const navigate = useNavigate();
 
     function handleLogout(){
-        window.open("http://localhost:8000/auth/logout", "_self");
+        window.open("https://twitter-clone-backend-in-progress.vercel.app/auth/logout", "_self");
     }
 
     return (

@@ -27,7 +27,7 @@ export default function TweetPage(props) {
         setTweet(null);
 
         const fetchTweet = (tweetId) => {
-            axios.get(`http://localhost:8000/tweet/gettweet/${tweetId}`,
+            axios.get(`https://twitter-clone-backend-in-progress.vercel.app/tweet/gettweet/${tweetId}`,
                 { withCredentials: true }
             )
                 .then((res) => {
@@ -38,7 +38,7 @@ export default function TweetPage(props) {
                 })
         }
         const fetchComments = () => {
-            axios.get(`http://localhost:8000/tweet/getcomments/${tweetId}`, // comment is treated as tweet
+            axios.get(`https://twitter-clone-backend-in-progress.vercel.app/tweet/getcomments/${tweetId}`, // comment is treated as tweet
                 { withCredentials: true }
             )
                 .then((res) => {
