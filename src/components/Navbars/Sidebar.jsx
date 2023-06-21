@@ -15,7 +15,13 @@ export default function Sidebar(props) {
     function handleLogout(){
         axios.get("https://twitter-clone-backend-in-progress.vercel.app/auth/logout",
                   { withCredentials: true }
-                 );
+                 )
+        .then((res) => {
+            navigate("/");
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 
     return (
@@ -41,7 +47,7 @@ export default function Sidebar(props) {
 
                     <ul className="dropdown-menu text-small shadow">
                         <li>
-                            <a className="dropdown-item" href="#" onClick={handleLogout}> Logout </a>
+                            <a className="dropdown-item" onClick={handleLogout}> Logout </a>
                         </li>
                     </ul>
                 </div>
