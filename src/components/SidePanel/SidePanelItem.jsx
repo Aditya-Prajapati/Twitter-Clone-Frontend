@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import GeneralButton from "../Buttons/GeneralButton";
 import NameAndId from "../ProfileBox/NameAndId";
 import ProfileImage from "../ProfileImage";
@@ -7,11 +8,12 @@ import axios from "axios";
 
 export default function SidePanelItem(props) {
 
+    const isMobile = useMediaQuery({ query: "(max-width: 599px)" });
     let userToMapCopy = JSON.parse(JSON.stringify(props.userToMap));
     const [buttonText, setButtonText] = useState("");
     
-    if (!props.followPage && userToMapCopy.username.length > 16) {
-        userToMapCopy.username = (userToMapCopy.username.substring(0, 16) + "...");
+    if ((!props.followPage || isMobile) && userToMapCopy.username.length > 13) {
+        userToMapCopy.username = (userToMapCopy.username.substring(0, 13) + "...");
     }
     
     useEffect(() => {
