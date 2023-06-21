@@ -30,7 +30,7 @@ export default function FollowPage(props) {
             </div>
 
             <div className="d-inline-flex flex-column feed">
-                {(isTablet || isDesktop) && <Header heading={props.user.name} subHeading={props.user.username} style={{ height: "72px" }} />}
+                {(isTablet || isDesktop) && <Header heading={props.user.name} subHeading={props.user.username} style={{ height: "72px", position: "relative" }} />}
                 <Section sections={sections} user={props.user} activeIndex={requestId} />
 
                 <div style={{ borderBottom: ".9px solid rgb(211, 211, 211, 0.3)", borderRight: ".9px solid rgb(211, 211, 211, 0.3)", paddingTop: "8px" }}>
