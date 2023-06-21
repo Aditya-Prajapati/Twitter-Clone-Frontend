@@ -23,7 +23,7 @@ export default function Login(props) {
         try{
             await axios
                 .post(
-                    "https://twitter-clone-backend-in-progress.vercel.app/auth/login",
+                    "http://localhost:8000/auth/login",
                     { username: email, password: pswrd },
                     { withCredentials: true },
                     {
@@ -55,7 +55,7 @@ export default function Login(props) {
             </div>
 
             <h2 className="HeadingText">Sign in to Twitter</h2>
-            <LoginButton link="https://twitter-clone-backend-in-progress.vercel.app/auth/google" icon={<GoogleIcon />} text={"Sign in with Google"} />
+            <LoginButton link="http://localhost:8000/auth/google" icon={<GoogleIcon />} text={"Sign in with Google"} />
             <LoginButton link="/notfound" icon={<AppleIcon />} text={"Sign in with Apple"} />
 
             <hr className="Or-line" />
