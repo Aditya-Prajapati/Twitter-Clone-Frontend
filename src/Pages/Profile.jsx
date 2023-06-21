@@ -25,7 +25,7 @@ export default function Profile(props){
     useEffect(() => {
         const getTweets = () => {
             axios.
-                get("http://localhost:8000/tweet/gettweets",{
+                get("https://twitter-clone-backend-in-progress.vercel.app/tweet/gettweets",{
                     withCredentials: true,
                     params: { all: false }
                 }
