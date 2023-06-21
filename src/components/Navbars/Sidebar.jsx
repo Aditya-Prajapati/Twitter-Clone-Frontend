@@ -13,7 +13,7 @@ export default function Sidebar(props) {
     const navigate = useNavigate();
 
     function handleLogout(){
-        axios.get("https://twitter-clone-backend-in-progress.vercel.app/auth/logout",
+        axios.post("https://twitter-clone-backend-in-progress.vercel.app/auth/logout",
                   { withCredentials: true }
                  )
         .then((res) => {
