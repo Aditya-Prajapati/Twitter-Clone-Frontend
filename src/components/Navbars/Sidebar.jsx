@@ -6,13 +6,16 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import ProfileImage from "../ProfileImage";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Sidebar(props) {
 
     const navigate = useNavigate();
 
     function handleLogout(){
-        window.open("https://twitter-clone-frontend-in-progress.vercel.app/auth/logout", "_self");
+        axios.get("https://twitter-clone-backend-in-progress.vercel.app/auth/logout",
+                  { withCredentials: true }
+                 );
     }
 
     return (
