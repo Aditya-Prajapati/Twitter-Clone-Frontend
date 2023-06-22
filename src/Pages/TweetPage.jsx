@@ -115,7 +115,7 @@ export default function TweetPage(props) {
                     setCommentClicked={setCommentClicked}
                 />
 
-                {isMobile && <MobileNavbar />}
+                {isMobile && <MobileNavbar user={props.user} />}
             </div>
 
             <div className={"d-inline-flex flex-column side-panel-container"}>
