@@ -65,7 +65,7 @@ export default function Profile(props){
                 {tweets.map((tweet, index) => {
                     return <Tweet key={index} tweet={tweet} user={props.user} setDeleteTweet={setDeleteTweet} />;
                 })}
-                {isMobile && <MobileNavbar />}
+                {isMobile && <MobileNavbar user={props.user} />}
             </div>
 
             <div className={"d-inline-flex flex-column side-panel-container"}>
