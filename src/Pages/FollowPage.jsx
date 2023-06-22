@@ -37,7 +37,7 @@ export default function FollowPage(props) {
                     <SidePanel path={path} requestId={requestId} user={props.user} heading=" " followPage={true} style={{ backgroundColor: "white", borderRadius: "0", boxShadow: "none" }} />
                 </div>
 
-                {isMobile && <MobileNavbar />}
+                {isMobile && <MobileNavbar user={props.user} />}
             </div>
 
             <div className={"d-inline-flex flex-column side-panel-container"}>
