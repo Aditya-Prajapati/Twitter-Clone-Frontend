@@ -22,7 +22,7 @@ export default function LoginButton(props) {
                 style={styling}
             >
                 {props.icon}
-                <span className="ms-2"> {props.text} </span>
+                <span className="ms-2" style={{ fontWeight: "500" }}> {props.text} </span>
             </button>
         </a>
     );

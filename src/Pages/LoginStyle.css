@@ -7,6 +7,10 @@
     border: 0.05rem solid rgb(159, 156, 156);
 }
 
+#Login:hover{
+    background-color: white;
+}
+
 #Login .LoginButton {
     display: flex;
     align-items: center;
@@ -14,7 +18,13 @@
     margin: 1.5% auto;
     padding: 2% 0;
     justify-content: center;
+    background-color: white;
     border: 0.05rem solid rgb(159, 156, 156);
+}
+
+#Login .LoginButton:hover{
+    color: white;
+    background-color: black;
 }
 
 #Login .LoginInput {
