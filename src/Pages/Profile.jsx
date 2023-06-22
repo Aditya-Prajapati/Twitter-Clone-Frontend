@@ -63,7 +63,10 @@ export default function Profile(props){
                 <Header heading="Your tweets" />
 
                 {tweets.map((tweet, index) => {
-                    return <Tweet key={index} tweet={tweet} user={props.user} setDeleteTweet={setDeleteTweet} />;
+                    let liked = tweet.likedBy.filter((likedBy) => {
+                        return likedBy === props.user.username
+                    })
+                    return <Tweet key={index} tweet={tweet} liked={liked.length} user={props.user} setDeleteTweet={setDeleteTweet} />;
                 })}
                 {isMobile && <MobileNavbar user={props.user} />}
             </div>

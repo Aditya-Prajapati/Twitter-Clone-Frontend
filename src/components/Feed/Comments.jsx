@@ -47,11 +47,14 @@ export default function Comments(props) {
                     username: commentBy.username,
                     picture: commentBy.picture
                 }
-
+                let liked = commentBy.likedBy.filter((likedBy) => {
+                    return likedBy === props.user.username
+                })
                 return (
                     <Tweet
                         key={index}
                         tweet={commentBy}
+                        liked={liked.length}
                         user={user}
                         currentUser={props.user}
                         isComment={true}

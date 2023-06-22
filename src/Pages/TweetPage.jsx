@@ -66,6 +66,9 @@ export default function TweetPage(props) {
 
                 <Tweet
                     tweet={tweet}
+                    liked={tweet.likedBy.filter((likedBy) => {
+                        return likedBy === props.user.username
+                    })}
                     user={{ name: tweet.name, username: tweet.username, picture: tweet.picture }}
                     currentUser={props.user}
                     disableDeleteTweet={true}
@@ -82,10 +85,14 @@ export default function TweetPage(props) {
                             name: comment.name,
                             picture: comment.picture
                         };
+                        let liked = comment.likedBy.filter((likedBy) => {
+                            return likedBy === props.user.username
+                        })
                         return (
                             <Tweet
                                 key={index}
                                 tweet={comment}
+                                liked={liked}
                                 user={user}
                                 currentUser={props.user}
                                 setNewComment={setNewComment}

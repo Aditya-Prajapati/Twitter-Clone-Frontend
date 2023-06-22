@@ -64,7 +64,10 @@ export default function Home(props){
                         username: tweet.username,
                         picture: tweet.picture
                     }
-                    return <Tweet key={index} tweet={tweet} user={user} currentUser={props.user} disableDeleteTweet={true} />;
+                    let liked = tweet.likedBy.filter((likedBy) => {
+                        return likedBy === props.user.username
+                    })
+                    return <Tweet key={index} tweet={tweet} user={user} liked={liked.length} currentUser={props.user} disableDeleteTweet={true} />;
                 })}
 
                 {isMobile && <MobileNavbar user={props.user} />}
