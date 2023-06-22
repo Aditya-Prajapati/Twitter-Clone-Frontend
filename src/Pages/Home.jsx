@@ -67,7 +67,7 @@ export default function Home(props){
                     return <Tweet key={index} tweet={tweet} user={user} currentUser={props.user} disableDeleteTweet={true} />;
                 })}
 
-                {isMobile && <MobileNavbar />}
+                {isMobile && <MobileNavbar user={props.user} />}
             </div>
 
             <div className={"d-inline-flex flex-column side-panel-container"}>
