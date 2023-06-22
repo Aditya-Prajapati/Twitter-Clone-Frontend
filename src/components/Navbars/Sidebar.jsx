@@ -14,7 +14,8 @@ export default function Sidebar(props) {
 
     function handleLogout(){
         axios.post("https://twitter-clone-backend-in-progress.vercel.app/auth/logout",
-                  { withCredentials: true }
+                   {},
+                   { withCredentials: true }
                  )
         .then((res) => {
             navigate("/");
