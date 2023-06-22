@@ -33,7 +33,7 @@ export default function Explore(props){
                 <Section sections={sections} activeIndex={0} />
                 <Trending />
                 {/* <Tweet /> */}
-                {isMobile && <MobileNavbar />}
+                {isMobile && <MobileNavbar user={props.user} />}
             </div>
 
             <div className={"d-inline-flex flex-column side-panel-container"}>
