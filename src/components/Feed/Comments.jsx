@@ -53,6 +53,7 @@ export default function Comments(props) {
                         key={index}
                         tweet={commentBy}
                         user={user}
+                        currentUser={props.user}
                         isComment={true}
                         style={{ cursor: "pointer" }}
                         disableDeleteTweet={true}

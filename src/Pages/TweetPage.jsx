@@ -67,6 +67,7 @@ export default function TweetPage(props) {
                 <Tweet
                     tweet={tweet}
                     user={{ name: tweet.name, username: tweet.username, picture: tweet.picture }}
+                    currentUser={props.user}
                     disableDeleteTweet={true}
                     directComment={true}
                     tweetPage={true}
@@ -86,6 +87,7 @@ export default function TweetPage(props) {
                                 key={index}
                                 tweet={comment}
                                 user={user}
+                                currentUser={props.user}
                                 setNewComment={setNewComment}
                                 threaded={true}
                                 isComment={true}
