@@ -30,8 +30,12 @@ export default function Explore(props){
                 <div className="d-flex justify-content-center align-items-center w-100">
                     <Searchbar style={{ width: "96%" }} />
                 </div>
-                <Section sections={sections} activeIndex={0} />
-                <Trending />
+
+                {!isMobile && <Section sections={sections} activeIndex={0} />}
+                {!isMobile && <Trending />}
+                {isMobile && <Section sections={["Who to follow"]} activeIndex={0} />}
+                {isMobile && <SidePanel classNames="mt-2" user={props.user} requestId={0} heading=" " style={{ backgroundColor: "white", borderRadius: "0", boxShadow: "none" }} />}
+
                 {/* <Tweet /> */}
                 {isMobile && <MobileNavbar user={props.user} />}
             </div>
