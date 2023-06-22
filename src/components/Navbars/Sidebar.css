@@ -6,3 +6,7 @@
     width: 13%;
     z-index: 2;
 }
+
+.sidebar .dropdown{
+    cursor: pointer
+}
