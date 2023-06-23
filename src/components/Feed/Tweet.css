@@ -1,4 +1,4 @@
-.card{
+.card {
     border: none;
     border-radius: 0;
     border-bottom: 0.9px solid rgb(211, 211, 211, 0.3);
@@ -8,25 +8,25 @@
     z-index: 0;
 }
 
-.card:hover{
+.card:hover {
     background-color: rgb(211, 211, 211, 0.07);
     cursor: pointer;
 }
 
-.card-text{
+.card-text {
     font-size: 1rem;
 }
 
-.dropdown-item{
+.dropdown-item {
     cursor: pointer;
 }
 
-.tweet-image{
+.tweet-image {
     height: auto;
     max-width: 100%;
 }
 
-.tweet-image-bg{
+.tweet-image-bg {
     background-color: black;
     border: 0.9px solid rgb(211, 211, 211, 0.3);
     border-radius: 16px;
@@ -35,13 +35,27 @@
     text-align: center;
 }
 
-.comment-line{
+.comment-line {
     border-left: 2px solid rgb(211, 211, 211, 0.7);
     height: 100%;
     margin: 18% 0 0 48%;
 }
 
-.options span{
+.options span {
     font-size: small;
     padding-left: 5px;
+}
+
+#tweet .dropdown:hover{
+    color: #1DA1F2;
+    border-radius: 50%;
+}
+
+#tweet .dateNtimeContainer{
+    margin-bottom: 1.3px;
+}
+
+#tweet .dateNtime{
+    font-size: small;
+    color: rgb(83, 100, 113);
 }

@@ -23,7 +23,7 @@ export default function Home(props){
     useEffect(() => {
         const getTweets =  () => {
             axios.
-                get("http://localhost:8000/tweet/gettweets", {
+                get("https://twitter-clone-backend-in-progress.vercel.app/tweet/gettweets", {
                     withCredentials: true,
                     params: { all: true }
                 }
@@ -62,12 +62,14 @@ export default function Home(props){
                     let user = {
                         name: tweet.name,
                         username: tweet.username,
-                        picture: tweet.picture
+                        picture: tweet.picture,
+                        date: tweet.date,
+                        time: tweet.time
                     }
                     let liked = tweet.likedBy.filter((likedBy) => {
                         return likedBy === props.user.username
                     })
-                    return <Tweet key={index} tweet={tweet} user={user} liked={liked.length} currentUser={props.user} disableDeleteTweet={true} />;
+                    return <Tweet key={index} tweet={tweet} user={user} liked={liked.length} currentUser={props.user} disableDeleteTweet={true} removeOptions={true} />;
                 })}
 
                 {isMobile && <MobileNavbar user={props.user} />}

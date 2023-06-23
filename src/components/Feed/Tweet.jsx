@@ -10,12 +10,16 @@ import axios from "axios";
 import Comments from "./Comments";
 import Header from "../Header/Header";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+
+let TIME = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+let DATE = `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()}`;
 
 const deleteTweet = (e, tweet, setDeleteTweet) => {
     e.preventDefault();
 
     axios
-        .post("http://localhost:8000/tweet/deTletetweet",
+        .post("https://twitter-clone-backend-in-progress.vercel.app/tweet/deletetweet",
             {
                 tweetId: tweet._id
             },
@@ -32,9 +36,9 @@ const deleteTweet = (e, tweet, setDeleteTweet) => {
 }
 
 const handleLike = (tweet, setLikes, isComment, liked, setLiked) => {
-    
+
     axios.
-        post("http://localhost:8000/tweet/liketweet",
+        post("https://twitter-clone-backend-in-progress.vercel.app/tweet/liketweet",
             {
                 tweetId: tweet._id,
                 isComment: isComment,
@@ -67,7 +71,7 @@ const handleComment = (tweet, setClickedCommentButton, clickedCommentButton, set
     }
 
     axios
-        .post("http://localhost:8000/tweet/getcomments",
+        .post("https://twitter-clone-backend-in-progress.vercel.app/tweet/getcomments",
             {
                 tweetId: tweet._id
             },
@@ -83,6 +87,8 @@ const handleComment = (tweet, setClickedCommentButton, clickedCommentButton, set
 
 export default function Tweet(props) {
 
+    const isMobile = useMediaQuery({ query: "(max-width: 599px)" });
+    const [timeStamp, setTimeStamp] = useState(null);
     const [likes, setLikes] = useState(props.tweet.likes);
     const [liked, setLiked] = useState(props.liked);
     const [comments, setComments] = useState(props.tweet.comments);
@@ -105,9 +111,36 @@ export default function Tweet(props) {
         setlikesButtonHover(!likesButtonHover);
     }
 
+    let parts1 = props.tweet.date.split('-');
+    let tweetDay = parseInt(parts1[0]), tweetMonth = parseInt(parts1[1]), tweetYear = parseInt(parts1[2]);
+    let date = new Date(tweetYear, tweetMonth, tweetDay);
+
+    let parts2 = props.tweet.time.split(':');
+    let tweetHr = parseInt(parts2[0]), tweetMin = parseInt(parts2[1]), tweetSec = parseInt(parts2[2]);
+
+    const updateTimeStamp = () => {
+        TIME = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+        DATE = `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()}`;
+        let tweetDate = new Date(tweetYear + "-" + tweetMonth + "-" + tweetDay);
+        let currDate = new Date(DATE.split('-')[2] + "-" + DATE.split('-')[1] + "-" + DATE.split('-')[0]);
+
+        if (currDate.getTime() === tweetDate.getTime()) {
+            setTimeStamp(Math.abs(parseInt(TIME.split(':')[0]) - parseInt(tweetHr)) + "h"); // within a day
+        }
+        else {
+            setTimeStamp(tweetDay + " " + tweetDate.toLocaleString("default", { month: "long" }).substr(0, 3)); // not today
+        }
+
+        setTimeout(updateTimeStamp, 100000);
+    }
+
+    setTimeout(updateTimeStamp, 0);
+
+    if (!timeStamp) return <div> Loading... </div>;
+
     return (
         <>
-            <div className="card" style={customStyle}>
+            <div className="card" id="tweet" style={customStyle}>
                 <div className="card-body">
                     <div className="d-flex flex-column">
                         <Link to={`/${props.tweet.username}/${props.tweet._id}/${props.isComment || false}`} style={{ textDecoration: "none", color: "black" }}>
@@ -115,7 +148,6 @@ export default function Tweet(props) {
 
                                 <div className="me-3">
                                     <ProfileImage width={46} height={46} user={props.user} />
-
                                     {(clickedCommentButton || props.threaded) && <div className="comment-line"></div>}
                                 </div>
 
@@ -123,21 +155,24 @@ export default function Tweet(props) {
 
                                     <div>
                                         {/* Tweet Header */}
-                                        <div className="d-flex justify-content-between">
-
-                                            <NameAndId user={props.user} />
-                                            <div className="dropdown">
-
-                                                <form onSubmit={(e) => deleteTweet(e, props.tweet, props.setDeleteTweet)}>
-                                                    <div href="#" className="d-flex align-items-center justify-content-center p-3 link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown"> </div>
-                                                    <ul className="dropdown-menu text-small">
-                                                        <li>
-                                                            <button onClick={(e) => e.stopPropagation()} disabled={props.disableDeleteTweet} className="dropdown-item"> Delete Tweet </button>
-                                                        </li>
-                                                    </ul>
-                                                </form>
-
+                                        <div className="d-flex align-items-center justify-content-between">
+                                            <div className="d-flex w-100">
+                                                <NameAndId user={props.user} />
+                                                <div className="d-flex align-items-end ms-3 dateNtimeContainer">
+                                                    <p className="dateNtime m-0">
+                                                        {timeStamp}
+                                                    </p>
+                                                </div>
                                             </div>
+
+                                            {!isMobile && <form onSubmit={(e) => deleteTweet(e, props.tweet, props.setDeleteTweet)} className="d-flex align-items-center me-2">
+                                                <div className="link-body-emphasis dropdown" data-bs-toggle="dropdown">...</div>
+                                                <ul className="dropdown-menu">
+                                                    <li>
+                                                        <button onClick={(e) => e.stopPropagation()} disabled={props.disableDeleteTweet} className="dropdown-item"> Delete Tweet </button>
+                                                    </li>
+                                                </ul>
+                                            </form>}
                                         </div>
 
                                         {/* Tweet Content */}
@@ -165,7 +200,7 @@ export default function Tweet(props) {
                         </Link>
                     </div>
                 </div>
-                    {clickedCommentButton && <TweetArea tweet={props.tweet} user={props.currentUser || props.user} text="Tweet your reply!" buttonText="Reply" style={{ marginTop: "14px", padding: "16px", border: "none", backgroundColor: "white" }} makeReply={true} comments={comments} setNewComment={props.setNewComment} setComments={setComments} isComment={props.isComment} />}
+                {clickedCommentButton && <TweetArea tweet={props.tweet} user={props.currentUser || props.user} text="Tweet your reply!" buttonText="Reply" style={{ marginTop: "14px", padding: "16px", border: "none", backgroundColor: "white" }} makeReply={true} comments={comments} setNewComment={props.setNewComment} setComments={setComments} isComment={props.isComment} />}
             </div>
         </>
     );

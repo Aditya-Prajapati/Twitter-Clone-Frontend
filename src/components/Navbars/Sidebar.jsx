@@ -35,9 +35,15 @@ export default function Sidebar(props) {
 
                 {/* Icons */}
                 <ul className="nav flex-column mb-auto text-center">
-                    <NavItem link="/home" iconName={faHouse} iconColor={"#282829"} iconSize={"xl"} /> 
-                    <NavItem link="/explore" iconName={faHashtag} iconColor={"#282829"} iconSize={"xl"} /> 
-                    <NavItem link="/profile" iconName={faUser} iconColor={"#282829"} iconSize={"xl"} /> 
+                    <div className="d-flex align-items-center justify-content-center sidebar-nav-item">
+                        <NavItem link="/home" iconName={faHouse} iconColor={"#282829"} iconSize={"xl"} /> 
+                    </div>  
+                    <div className="d-flex align-items-center justify-content-center sidebar-nav-item">
+                        <NavItem link="/explore" iconName={faHashtag} iconColor={"#282829"} iconSize={"xl"} /> 
+                    </div>  
+                    <div className="d-flex align-items-center justify-content-center sidebar-nav-item">
+                        <NavItem link="/profile" iconName={faUser} iconColor={"#282829"} iconSize={"xl"} /> 
+                    </div>  
                 </ul>
 
                 {/* Profile Icon */}

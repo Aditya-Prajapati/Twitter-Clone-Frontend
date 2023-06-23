@@ -9,7 +9,7 @@ import axios from "axios";
 
 const getUpdatedUser = (updatedUser) => {
     axios
-        .get("http://localhost:8000/getuser",
+        .get("https://twitter-clone-backend-in-progress.vercel.app/getuser",
         { withCredentials: true }
         )
         .then((res) => {
@@ -40,13 +40,15 @@ export default function ProfileBox(props){
 
             <div className={"profile-box"}>
 
-                <ProfileImage user={props.user} width={133} height={133} style={{ position: "absolute", bottom: "150px" }} />
-
-                <div className="d-flex justify-content-end">
-                    <EditProfileButton />
+                <div className="d-flex align-items-center justify-content-center profile-img-container">
+                    <ProfileImage user={props.user} width={133} height={133} />
                 </div>
 
-                <NameAndId user={props.user} />  
+                <div className="d-flex my-4 justify-content-end">
+                    {/* <EditProfileButton /> */}
+                </div>
+
+                <NameAndId user={props.user} profileBox={true} />  
 
                 {/* Information */}
                 <div className="profile-box-info">
