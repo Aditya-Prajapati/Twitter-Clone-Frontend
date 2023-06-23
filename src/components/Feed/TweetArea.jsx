@@ -15,7 +15,7 @@ export default function TweetArea(props){
         e.preventDefault();
 
         await axios
-            .post("https://twitter-clone-backend-in-progress.vercel.app/tweet/posttweets",
+            .post("https://twitterclonebackendv1.vercel.app/tweet/posttweets",
             {
                 name: props.user.name,
                 username: props.user.username,
@@ -37,7 +37,7 @@ export default function TweetArea(props){
         e.preventDefault();
 
         axios
-            .post("https://twitter-clone-backend-in-progress.vercel.app/tweet/comment",
+            .post("https://twitterclonebackendv1.vercel.app/tweet/comment",
             {
                 comments: props.comments,
                 isComment: props.isComment || false,
