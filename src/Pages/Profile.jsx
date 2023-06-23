@@ -58,9 +58,9 @@ export default function Profile(props){
             </div>
 
             <div className="d-inline-flex flex-column feed">
-                <Header heading="Profile" subHeading="" />
+                <Header heading={props.user.name} subHeading={tweets.length!==1 ? tweets.length + " Tweets": "1 Tweet"} style={{ height: "75px" }} />
                 <ProfileBox user={props.user} setUser={props.setUser} followUpdated={followUpdated} />
-                <Header heading="Your tweets" />
+                <Header heading="Your tweets" style={{ height: "75px" }} />
 
                 {tweets.map((tweet, index) => {
                     let liked = tweet.likedBy.filter((likedBy) => {

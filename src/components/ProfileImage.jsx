@@ -15,7 +15,7 @@ export default function ProfileImage(props){
         <img
             className={"rounded-circle"}
             src={props.user.picture ? props.user.picture : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS_lSNw7Ee7u6J7SWu5Ku6BP6H3kMcOI9TFw&usqp=CAU"}
-            alt="profile_image"
+            alt="img"
             style={imageStyle}
         />
     );

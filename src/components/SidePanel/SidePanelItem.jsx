@@ -9,13 +9,8 @@ import axios from "axios";
 export default function SidePanelItem(props) {
 
     const isMobile = useMediaQuery({ query: "(max-width: 599px)" });
-    let userToMapCopy = JSON.parse(JSON.stringify(props.userToMap));
     const [buttonText, setButtonText] = useState("");
     const [buttonHover, setButtonHover] = useState(false);
-    
-    if ((!props.followPage || isMobile) && userToMapCopy.username.length > 13) {
-        userToMapCopy.username = (userToMapCopy.username.substring(0, 13) + "...");
-    }
     
     useEffect(() => {
         const temp = props.user.follows.filter((follows) => {
@@ -51,7 +46,7 @@ export default function SidePanelItem(props) {
 
             {/* Content */}
             <div className="d-flex align-items-center justify-content-between side-panel-item-content">
-                <NameAndId user={userToMapCopy} />
+                <NameAndId user={props.userToMap} />
                 <div onMouseEnter={handleButtonEnter} onMouseLeave={handleButtonLeave}>
                     <GeneralButton
                         requestId={0}

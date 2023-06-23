@@ -10,3 +10,12 @@
 .sidebar .dropdown{
     cursor: pointer
 }
+
+.sidebar-nav-item:hover{
+    border-radius: 50%;
+    background-color: rgb(247, 249, 249);
+}
+
+.sidebar-nav-item:active{
+    background-color: rgb(237, 239, 239);
+}
