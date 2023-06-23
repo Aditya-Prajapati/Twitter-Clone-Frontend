@@ -19,7 +19,7 @@ const deleteTweet = (e, tweet, setDeleteTweet) => {
     e.preventDefault();
 
     axios
-        .post("https://twitter-clone-backend-in-progress.vercel.app/tweet/deletetweet",
+        .post("https://twitterclonebackendv1.vercel.app/tweet/deletetweet",
             {
                 tweetId: tweet._id
             },
@@ -38,7 +38,7 @@ const deleteTweet = (e, tweet, setDeleteTweet) => {
 const handleLike = (tweet, setLikes, isComment, liked, setLiked) => {
 
     axios.
-        post("https://twitter-clone-backend-in-progress.vercel.app/tweet/liketweet",
+        post("https://twitterclonebackendv1.vercel.app/tweet/liketweet",
             {
                 tweetId: tweet._id,
                 isComment: isComment,
@@ -71,7 +71,7 @@ const handleComment = (tweet, setClickedCommentButton, clickedCommentButton, set
     }
 
     axios
-        .post("https://twitter-clone-backend-in-progress.vercel.app/tweet/getcomments",
+        .post("https://twitterclonebackendv1.vercel.app/tweet/getcomments",
             {
                 tweetId: tweet._id
             },
