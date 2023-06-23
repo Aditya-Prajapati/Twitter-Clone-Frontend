@@ -1,8 +1,19 @@
+#LoginContainer{
+    width: 100vw;
+    height: 100vh;
+}
+
+#SignupContainer{
+    width: 100vw;
+    height: 100vh;
+}
+
 #Login {
     display: flex;
     width: 35%;
+    height: 90%;
     margin: 2% auto;
-    padding: 0.7rem 0.2rem;
+    padding: 2% 0.2rem;
     border-radius: 2%;
     border: 0.05rem solid rgb(159, 156, 156);
 }
@@ -11,12 +22,16 @@
     background-color: white;
 }
 
+#Login .LoginButton:first-child{
+    margin-top: 5%;
+}
+
 #Login .LoginButton {
     display: flex;
     align-items: center;
     width: 65%;
-    margin: 1.5% auto;
-    padding: 2% 0;
+    margin: 3% auto;
+    padding: 2.5% 0;
     justify-content: center;
     background-color: white;
     border: 0.05rem solid rgb(159, 156, 156);
@@ -29,7 +44,7 @@
 
 #Login .LoginInput {
     width: 65%;
-    margin: 4px auto;
+    margin: 6px auto;
     padding: 4px 4%;
     height: 2.5rem;
     outline: none;
@@ -82,6 +97,7 @@
     border-radius: 0.14rem;
     border: 0.05rem solid rgb(159, 156, 156);
 }
+
 .passwordContainer input {
     border: none !important;
     margin: 0 !important;

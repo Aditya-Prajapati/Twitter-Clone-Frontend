@@ -11,7 +11,7 @@ export default function MobileNavbar(props){
     const navigate = useNavigate();
 
     function handleLogout(){
-        axios.post("https://twitter-clone-backend-in-progress.vercel.app/auth/logout",
+        axios.post("http://localhost:8000/auth/logout",
         {},
         { withCredentials: true }
         )
